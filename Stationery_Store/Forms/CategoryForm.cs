@@ -163,5 +163,10 @@ namespace Stationery_Store.Forms
             CategoryStatuslbl.Text = message;
             CategoryStatuslbl.ForeColor = color;
         }
+
+        private void CategoryForm_Load(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
+        }
     }
 }

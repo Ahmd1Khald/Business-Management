@@ -17,7 +17,7 @@
 
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             SellGridView = new DataGridView();
             AddBtn = new Button();
             productsGridView = new DataGridView();
@@ -37,14 +37,14 @@
             // 
             SellGridView.AllowUserToAddRows = false;
             SellGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            SellGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            SellGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             SellGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SellGridView.Location = new Point(557, 23);
             SellGridView.Margin = new Padding(3, 4, 3, 4);
@@ -172,11 +172,11 @@
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1070, 532);
             Controls.Add(panel1);
-            IsMdiContainer = true;
             Name = "SellForm";
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sell";
+            Load += SellForm_Load;
             ((System.ComponentModel.ISupportInitialize)SellGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)productsGridView).EndInit();
             panel1.ResumeLayout(false);

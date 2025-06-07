@@ -248,6 +248,7 @@ namespace Stationery_Store.Forms
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "المنتجات";
+            Load += ProductsForm_Load;
             filterPanel.ResumeLayout(false);
             filterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)productsGridView).EndInit();

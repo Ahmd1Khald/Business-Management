@@ -392,5 +392,10 @@ namespace Stationery_Store.Forms
         {
 
         }
+
+        private void ProductsForm_Load(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
+        }
     }
 } 

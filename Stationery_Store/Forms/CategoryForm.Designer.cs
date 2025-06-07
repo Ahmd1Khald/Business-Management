@@ -185,7 +185,8 @@
             Controls.Add(label1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "CategoryForm";
-            Text = "Form1";
+            Text = "الأصناف";
+            Load += CategoryForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)categoryBindingSource).EndInit();
             ResumeLayout(false);

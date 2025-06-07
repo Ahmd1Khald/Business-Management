@@ -346,5 +346,10 @@ namespace Stationery_Store.Forms
             UpdateTotalPrice();
             UpdateTotalQuantity();
         }
+
+        private void SellForm_Load(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
+        }
     }
 }

@@ -16,20 +16,20 @@ namespace Stationery_Store.Forms
     public partial class Report : Form
     {
         Context context = new Context();
-        private List<Order> orders = new List<Order>();
+        //private List<Order> orders = new List<Order>();
 
 
         public Report()
         {
             InitializeComponent();
-            orders.Add(new Order { ID = 1, Date = new DateTime(2025, 6, 1), TotalAmount = 5, TotalPrice = 100 });
-            orders.Add(new Order { ID = 2, Date = new DateTime(2025, 6, 5), TotalAmount = 3, TotalPrice = 60 });
-            orders.Add(new Order { ID = 3, Date = new DateTime(2025, 6, 8), TotalAmount = 5, TotalPrice = 100 });
-            orders.Add(new Order { ID = 4, Date = new DateTime(2025, 6, 10), TotalAmount = 3, TotalPrice = 60 });
-            orders.Add(new Order { ID = 5, Date = new DateTime(2025, 6, 11), TotalAmount = 5, TotalPrice = 100 });
-            orders.Add(new Order { ID = 6, Date = new DateTime(2025, 6, 12), TotalAmount = 3, TotalPrice = 60 });
-            orders.Add(new Order { ID = 7, Date = new DateTime(2025, 6, 22), TotalAmount = 5, TotalPrice = 100 });
-            orders.Add(new Order { ID = 7, Date = new DateTime(2025, 6, 30), TotalAmount = 3, TotalPrice = 60 });
+            //orders.Add(new Order { ID = 1, Date = new DateTime(2025, 6, 1), TotalAmount = 5, TotalPrice = 100 });
+            //orders.Add(new Order { ID = 2, Date = new DateTime(2025, 6, 5), TotalAmount = 3, TotalPrice = 60 });
+            //orders.Add(new Order { ID = 3, Date = new DateTime(2025, 6, 8), TotalAmount = 5, TotalPrice = 100 });
+            //orders.Add(new Order { ID = 4, Date = new DateTime(2025, 6, 10), TotalAmount = 3, TotalPrice = 60 });
+            //orders.Add(new Order { ID = 5, Date = new DateTime(2025, 6, 11), TotalAmount = 5, TotalPrice = 100 });
+            //orders.Add(new Order { ID = 6, Date = new DateTime(2025, 6, 12), TotalAmount = 3, TotalPrice = 60 });
+            //orders.Add(new Order { ID = 7, Date = new DateTime(2025, 6, 22), TotalAmount = 5, TotalPrice = 100 });
+            //orders.Add(new Order { ID = 7, Date = new DateTime(2025, 6, 30), TotalAmount = 3, TotalPrice = 60 });
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Stationery_Store.Forms
 
         private void Report_Load(object sender, EventArgs e)
         {
-
+            this.ControlBox = false;
         }
 
         private void ReportDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -59,7 +59,7 @@ namespace Stationery_Store.Forms
             DateTime fromDate = dateTimePicker2.Value.Date;
             DateTime toDate = dateTimePicker1.Value.Date;
 
-            var filteredOrders = orders
+            var filteredOrders = context.Orders
                 .Where(o => o.Date.Date >= fromDate && o.Date.Date <= toDate)
                 .ToList();
 

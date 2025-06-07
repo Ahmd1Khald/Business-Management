@@ -14,8 +14,10 @@ namespace Stationery_Store.Forms
     {
         CategoryForm categoryForm;
         SellForm sellForm;
+        ProductsForm productsForm;
+        Report reportForm;
 
-        
+
         private Form lastActiveChild;
 
 
@@ -37,7 +39,7 @@ namespace Stationery_Store.Forms
 
             lastActiveChild?.Activate();
         }
-        
+
         bool sidebarExpand = true;
         private void sidebarTransition_Tick(object sender, EventArgs e)
         {
@@ -74,8 +76,8 @@ namespace Stationery_Store.Forms
                 categoryForm = new CategoryForm();
                 categoryForm.FormClosed += categoryForm_FormClosed;
                 categoryForm.MdiParent = this;
-                categoryForm.FormBorderStyle = FormBorderStyle.None;  
-                categoryForm.WindowState = FormWindowState.Maximized; 
+                categoryForm.FormBorderStyle = FormBorderStyle.None;
+                categoryForm.WindowState = FormWindowState.Maximized;
                 categoryForm.Show();
             }
             else
@@ -97,8 +99,8 @@ namespace Stationery_Store.Forms
             {
                 sellForm = new SellForm();
                 sellForm.FormClosed += sellForm_FormClosed;
-                //sellForm.MdiParent = this;
-                sellForm.FormBorderStyle = FormBorderStyle.None;  // Remove borders
+                sellForm.MdiParent = this;
+                sellForm.FormBorderStyle = FormBorderStyle.None;
                 sellForm.WindowState = FormWindowState.Maximized;
                 sellForm.Show();
             }
@@ -113,5 +115,53 @@ namespace Stationery_Store.Forms
         {
             sellForm = null;
         }
+
+        private void buttonProducts_Click(object sender, EventArgs e)
+        {
+            if (productsForm == null)
+            {
+                productsForm = new ProductsForm();
+                productsForm.FormClosed += productsForm_FormClosed;
+                productsForm.MdiParent = this;
+                productsForm.FormBorderStyle = FormBorderStyle.None;  // Remove borders
+                productsForm.WindowState = FormWindowState.Maximized;
+                productsForm.Show();
+            }
+            else
+            {
+                productsForm.Activate();
+            }
+            lastActiveChild = productsForm;
+        }
+        private void productsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            productsForm = null;
+        }
+
+
+
+        private void buttonReports_Click(object sender, EventArgs e)
+        {
+            if (reportForm == null)
+            {
+                reportForm = new Report();
+                reportForm.FormClosed += reportForm_FormClosed;
+                reportForm.MdiParent = this;
+                reportForm.FormBorderStyle = FormBorderStyle.None;  // Remove borders
+                reportForm.WindowState = FormWindowState.Maximized;
+                reportForm.Show();
+            }
+            else
+            {
+                reportForm.Activate();
+            }
+            lastActiveChild = reportForm;
+        }
+
+        private void reportForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            reportForm = null;
+        }
+
     }
 }

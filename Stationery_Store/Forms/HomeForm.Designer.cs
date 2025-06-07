@@ -44,9 +44,9 @@
             buttonSell = new Button();
             panel6 = new Panel();
             buttonReports = new Button();
-            sidebarTransition = new System.Windows.Forms.Timer(components);
             panel7 = new Panel();
             buttonUsers = new Button();
+            sidebarTransition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnHome).BeginInit();
             sidebar.SuspendLayout();
@@ -174,6 +174,7 @@
             buttonProducts.Text = "المنتجات       ";
             buttonProducts.TextAlign = ContentAlignment.MiddleRight;
             buttonProducts.UseVisualStyleBackColor = false;
+            buttonProducts.Click += buttonProducts_Click;
             // 
             // panel5
             // 
@@ -221,11 +222,7 @@
             buttonReports.Text = "التقارير        ";
             buttonReports.TextAlign = ContentAlignment.MiddleRight;
             buttonReports.UseVisualStyleBackColor = false;
-            // 
-            // sidebarTransition
-            // 
-            sidebarTransition.Interval = 10;
-            sidebarTransition.Tick += sidebarTransition_Tick;
+            buttonReports.Click += buttonReports_Click;
             // 
             // panel7
             // 
@@ -249,6 +246,11 @@
             buttonUsers.Text = "المستخدمين        ";
             buttonUsers.TextAlign = ContentAlignment.MiddleRight;
             buttonUsers.UseVisualStyleBackColor = false;
+            // 
+            // sidebarTransition
+            // 
+            sidebarTransition.Interval = 10;
+            sidebarTransition.Tick += sidebarTransition_Tick;
             // 
             // HomeForm
             // 

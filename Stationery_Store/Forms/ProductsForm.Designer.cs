@@ -180,7 +180,7 @@ namespace Stationery_Store.Forms
             productsGridView.RowHeadersWidth = 51;
             productsGridView.RowTemplate.Height = 35;
             productsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            productsGridView.Size = new Size(770, 512);
+            productsGridView.Size = new Size(770, 294);
             productsGridView.TabIndex = 0;
             // 
             // totalProductsLabel
@@ -188,7 +188,7 @@ namespace Stationery_Store.Forms
             totalProductsLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             totalProductsLabel.AutoSize = true;
             totalProductsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            totalProductsLabel.Location = new Point(10, 650);
+            totalProductsLabel.Location = new Point(10, 432);
             totalProductsLabel.Name = "totalProductsLabel";
             totalProductsLabel.Size = new Size(172, 28);
             totalProductsLabel.TabIndex = 3;
@@ -197,7 +197,7 @@ namespace Stationery_Store.Forms
             // btnAddProduct
             // 
             btnAddProduct.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAddProduct.Location = new Point(670, 650);
+            btnAddProduct.Location = new Point(670, 432);
             btnAddProduct.Margin = new Padding(3, 4, 3, 4);
             btnAddProduct.Name = "btnAddProduct";
             btnAddProduct.Size = new Size(110, 44);
@@ -209,7 +209,7 @@ namespace Stationery_Store.Forms
             // btnEditProduct
             // 
             btnEditProduct.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnEditProduct.Location = new Point(550, 650);
+            btnEditProduct.Location = new Point(550, 432);
             btnEditProduct.Margin = new Padding(3, 4, 3, 4);
             btnEditProduct.Name = "btnEditProduct";
             btnEditProduct.Size = new Size(110, 44);
@@ -221,7 +221,7 @@ namespace Stationery_Store.Forms
             // btnDeleteProduct
             // 
             btnDeleteProduct.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnDeleteProduct.Location = new Point(430, 650);
+            btnDeleteProduct.Location = new Point(430, 432);
             btnDeleteProduct.Margin = new Padding(3, 4, 3, 4);
             btnDeleteProduct.Name = "btnDeleteProduct";
             btnDeleteProduct.Size = new Size(110, 44);
@@ -234,8 +234,9 @@ namespace Stationery_Store.Forms
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.FromArgb(240, 240, 240);
-            ClientSize = new Size(800, 750);
+            ClientSize = new Size(800, 532);
             Controls.Add(btnDeleteProduct);
             Controls.Add(btnEditProduct);
             Controls.Add(btnAddProduct);
@@ -246,6 +247,7 @@ namespace Stationery_Store.Forms
             Name = "ProductsForm";
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
+            SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "المنتجات";
             Load += ProductsForm_Load;

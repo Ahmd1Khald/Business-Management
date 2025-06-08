@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stationery_Store.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,17 +17,41 @@ namespace Stationery_Store.Forms
         SellForm sellForm;
         ProductsForm productsForm;
         Report reportForm;
+        UsersForm usersForm;
+
 
 
         private Form lastActiveChild;
+        private Role userRole;
 
 
-        public HomeForm()
+
+        public HomeForm(Role role)
         {
             InitializeComponent();
             this.IsMdiContainer = true;
 
+            this.userRole = role;
+
+            this.Shown += HomeForm_Shown;
+
         }
+
+        private void HomeForm_Shown(object sender, EventArgs e)
+        {
+            if (userRole != Role.Admin)
+            {
+                // إخفاء كل الأزرار ما عدا البيع
+                buttonCategories.Visible = false;
+                buttonProducts.Visible = false;
+                buttonReports.Visible = false;
+                buttonUsers.Visible = false;
+
+                // مباشرة عرض شاشة البيع للمستخدم العادي
+                buttonSell.PerformClick();
+            }
+        }
+
         private void HomeForm_Resize(object sender, EventArgs e)
         {
             foreach (Form child in this.MdiChildren)
@@ -138,8 +163,6 @@ namespace Stationery_Store.Forms
             productsForm = null;
         }
 
-
-
         private void buttonReports_Click(object sender, EventArgs e)
         {
             if (reportForm == null)
@@ -163,5 +186,23 @@ namespace Stationery_Store.Forms
             reportForm = null;
         }
 
+        private void buttonUsers_Click(object sender, EventArgs e)
+        {
+            if (usersForm == null)
+            {
+                usersForm = new UsersForm();
+                usersForm.FormClosed += (s, args) => usersForm = null;
+                usersForm.MdiParent = this;
+                usersForm.FormBorderStyle = FormBorderStyle.None;
+                usersForm.WindowState = FormWindowState.Maximized;
+                usersForm.Show();
+            }
+            else
+            {
+                usersForm.Activate();
+            }
+
+            lastActiveChild = usersForm;
+        }
     }
 }

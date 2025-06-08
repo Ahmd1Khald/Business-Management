@@ -37,11 +37,11 @@
             panel2 = new Panel();
             buttonHome = new Button();
             panel3 = new Panel();
-            buttonCategories = new Button();
-            panel4 = new Panel();
-            buttonProducts = new Button();
-            panel5 = new Panel();
             buttonSell = new Button();
+            panel4 = new Panel();
+            buttonCategories = new Button();
+            panel5 = new Panel();
+            buttonProducts = new Button();
             panel6 = new Panel();
             buttonReports = new Button();
             panel7 = new Panel();
@@ -136,6 +136,30 @@
             panel3.Size = new Size(184, 65);
             panel3.TabIndex = 4;
             // 
+            // buttonSell
+            // 
+            buttonSell.BackColor = SystemColors.ActiveCaption;
+            buttonSell.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonSell.ForeColor = Color.Black;
+            buttonSell.Image = (Image)resources.GetObject("buttonSell.Image");
+            buttonSell.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSell.Location = new Point(-3, -3);
+            buttonSell.Name = "buttonSell";
+            buttonSell.Size = new Size(184, 62);
+            buttonSell.TabIndex = 2;
+            buttonSell.Text = "  البيع          ";
+            buttonSell.TextAlign = ContentAlignment.MiddleRight;
+            buttonSell.UseVisualStyleBackColor = false;
+            buttonSell.Click += buttonSell_Click;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(buttonCategories);
+            panel4.Location = new Point(3, 145);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(184, 65);
+            panel4.TabIndex = 4;
+            // 
             // buttonCategories
             // 
             buttonCategories.BackColor = SystemColors.ActiveCaption;
@@ -152,13 +176,13 @@
             buttonCategories.UseVisualStyleBackColor = false;
             buttonCategories.Click += buttonCategories_Click;
             // 
-            // panel4
+            // panel5
             // 
-            panel4.Controls.Add(buttonCategories);
-            panel4.Location = new Point(3, 145);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(184, 65);
-            panel4.TabIndex = 4;
+            panel5.Controls.Add(buttonProducts);
+            panel5.Location = new Point(3, 216);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(184, 65);
+            panel5.TabIndex = 4;
             // 
             // buttonProducts
             // 
@@ -175,30 +199,6 @@
             buttonProducts.TextAlign = ContentAlignment.MiddleRight;
             buttonProducts.UseVisualStyleBackColor = false;
             buttonProducts.Click += buttonProducts_Click;
-            // 
-            // panel5
-            // 
-            panel5.Controls.Add(buttonProducts);
-            panel5.Location = new Point(3, 216);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(184, 65);
-            panel5.TabIndex = 4;
-            // 
-            // buttonSell
-            // 
-            buttonSell.BackColor = SystemColors.ActiveCaption;
-            buttonSell.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
-            buttonSell.ForeColor = Color.Black;
-            buttonSell.Image = (Image)resources.GetObject("buttonSell.Image");
-            buttonSell.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSell.Location = new Point(-3, -3);
-            buttonSell.Name = "buttonSell";
-            buttonSell.Size = new Size(184, 62);
-            buttonSell.TabIndex = 2;
-            buttonSell.Text = "  البيع          ";
-            buttonSell.TextAlign = ContentAlignment.MiddleRight;
-            buttonSell.UseVisualStyleBackColor = false;
-            buttonSell.Click += buttonSell_Click;
             // 
             // panel6
             // 
@@ -246,6 +246,7 @@
             buttonUsers.Text = "المستخدمين        ";
             buttonUsers.TextAlign = ContentAlignment.MiddleRight;
             buttonUsers.UseVisualStyleBackColor = false;
+            buttonUsers.Click += buttonUsers_Click;
             // 
             // sidebarTransition
             // 

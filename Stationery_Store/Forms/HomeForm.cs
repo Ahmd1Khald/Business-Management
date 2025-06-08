@@ -17,10 +17,12 @@ namespace Stationery_Store.Forms
         SellForm sellForm;
         ProductsForm productsForm;
         Report reportForm;
+        UsersForm usersForm;
+
 
 
         private Form lastActiveChild;
-        private Role userRole; 
+        private Role userRole;
 
 
 
@@ -161,8 +163,6 @@ namespace Stationery_Store.Forms
             productsForm = null;
         }
 
-
-
         private void buttonReports_Click(object sender, EventArgs e)
         {
             if (reportForm == null)
@@ -186,5 +186,23 @@ namespace Stationery_Store.Forms
             reportForm = null;
         }
 
+        private void buttonUsers_Click(object sender, EventArgs e)
+        {
+            if (usersForm == null)
+            {
+                usersForm = new UsersForm();
+                usersForm.FormClosed += (s, args) => usersForm = null;
+                usersForm.MdiParent = this;
+                usersForm.FormBorderStyle = FormBorderStyle.None;
+                usersForm.WindowState = FormWindowState.Maximized;
+                usersForm.Show();
+            }
+            else
+            {
+                usersForm.Activate();
+            }
+
+            lastActiveChild = usersForm;
+        }
     }
 }

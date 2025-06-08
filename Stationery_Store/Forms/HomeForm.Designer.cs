@@ -130,7 +130,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(buttonCategories);
+            panel3.Controls.Add(buttonSell);
             panel3.Location = new Point(3, 74);
             panel3.Name = "panel3";
             panel3.Size = new Size(184, 65);
@@ -143,7 +143,7 @@
             buttonCategories.ForeColor = Color.Black;
             buttonCategories.Image = (Image)resources.GetObject("buttonCategories.Image");
             buttonCategories.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCategories.Location = new Point(0, 0);
+            buttonCategories.Location = new Point(0, 3);
             buttonCategories.Name = "buttonCategories";
             buttonCategories.Size = new Size(184, 62);
             buttonCategories.TabIndex = 2;
@@ -154,7 +154,7 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(buttonProducts);
+            panel4.Controls.Add(buttonCategories);
             panel4.Location = new Point(3, 145);
             panel4.Name = "panel4";
             panel4.Size = new Size(184, 65);
@@ -178,7 +178,7 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(buttonSell);
+            panel5.Controls.Add(buttonProducts);
             panel5.Location = new Point(3, 216);
             panel5.Name = "panel5";
             panel5.Size = new Size(184, 65);
@@ -191,7 +191,7 @@
             buttonSell.ForeColor = Color.Black;
             buttonSell.Image = (Image)resources.GetObject("buttonSell.Image");
             buttonSell.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSell.Location = new Point(0, 0);
+            buttonSell.Location = new Point(-3, -3);
             buttonSell.Name = "buttonSell";
             buttonSell.Size = new Size(184, 62);
             buttonSell.TabIndex = 2;

@@ -20,6 +20,8 @@ namespace Stationery_Store.Forms
 
 
         private Form lastActiveChild;
+        private Role userRole; 
+
 
 
         public HomeForm(Role role)
@@ -27,7 +29,27 @@ namespace Stationery_Store.Forms
             InitializeComponent();
             this.IsMdiContainer = true;
 
+            this.userRole = role;
+
+            this.Shown += HomeForm_Shown;
+
         }
+
+        private void HomeForm_Shown(object sender, EventArgs e)
+        {
+            if (userRole != Role.Admin)
+            {
+                // إخفاء كل الأزرار ما عدا البيع
+                buttonCategories.Visible = false;
+                buttonProducts.Visible = false;
+                buttonReports.Visible = false;
+                buttonUsers.Visible = false;
+
+                // مباشرة عرض شاشة البيع للمستخدم العادي
+                buttonSell.PerformClick();
+            }
+        }
+
         private void HomeForm_Resize(object sender, EventArgs e)
         {
             foreach (Form child in this.MdiChildren)

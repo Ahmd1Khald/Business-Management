@@ -33,6 +33,17 @@ namespace Stationery_Store.Entities
             new Product { ID = 1, Name= "قلم رصاص",CategoryId = 1,Description="قلم رصاص جامد جدا",Price=10F,Quantity=100},
             new Product { ID = 2, Name = "كراسة", CategoryId = 2, Description = "كراسة مربعات 80 ص", Price = 15F, Quantity = 120 });
 
+
+            modelBuilder.Entity<User>()
+                        .HasIndex(u => u.UserName)
+                        .IsUnique();
+
+
+            modelBuilder.Entity<User>().HasData(
+                new User {ID=1,NationalID="12345678912345",Password="123456",Phone="01061748098",UserName="Ahmed",UserRole=Role.Admin },
+                new User {ID=2,NationalID="12345678912345",Password="123456",Phone="01061748098",UserName="Khaled",UserRole=Role.User }
+                );
+
             
             base.OnModelCreating(modelBuilder);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stationery_Store.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace Stationery_Store.Forms
         private Form lastActiveChild;
 
 
-        public HomeForm()
+        public HomeForm(Role role)
         {
             InitializeComponent();
             this.IsMdiContainer = true;

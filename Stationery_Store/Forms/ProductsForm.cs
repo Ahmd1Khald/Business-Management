@@ -297,10 +297,17 @@ namespace Stationery_Store.Forms
             // Category Filtering
             if (selectedCategory != null)
             {
-                // Check for "All Categories" anonymous type by checking ValueMember
-                if (categoryComboBox.SelectedValue is int categoryId && categoryId != 0)
+                int selectedCategoryId = 0;
+                // Safely get the ID from the selected item
+                dynamic item = selectedCategory;
+                if (item.ID != null)
                 {
-                    query = query.Where(p => p.CategoryId == categoryId);
+                    selectedCategoryId = (int)item.ID;
+                }
+
+                if (selectedCategoryId != 0) // Skip filtering if "All Categories" is selected
+                {
+                    query = query.Where(p => p.CategoryId == selectedCategoryId);
                 }
             }
 

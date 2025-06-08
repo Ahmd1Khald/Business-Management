@@ -260,6 +260,7 @@
             Controls.Add(panel1);
             IsMdiContainer = true;
             Name = "HomeForm";
+            RightToLeft = RightToLeft.No;
             Text = "Home";
             Resize += HomeForm_Resize;
             panel1.ResumeLayout(false);

@@ -245,8 +245,7 @@ namespace Stationery_Store.Forms
             Controls.Add(productsGridView);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProductsForm";
-            RightToLeft = RightToLeft.Yes;
-            RightToLeftLayout = true;
+            RightToLeft = RightToLeft.No;
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "المنتجات";

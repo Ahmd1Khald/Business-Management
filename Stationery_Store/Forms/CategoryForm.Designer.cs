@@ -248,7 +248,7 @@
             Name = "CategoryForm";
             RightToLeft = RightToLeft.No;
             Text = "الأصناف";
-            Load += CategoryForm_Load;
+            //Load += CategoryForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)categoryBindingSource).EndInit();
             ResumeLayout(false);

@@ -262,6 +262,7 @@
             Controls.Add(sidebar);
             Controls.Add(panel1);
             IsMdiContainer = true;
+            MaximizeBox = false;
             Name = "HomeForm";
             RightToLeft = RightToLeft.No;
             Text = "Home";

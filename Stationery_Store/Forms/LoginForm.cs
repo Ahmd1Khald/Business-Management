@@ -11,13 +11,17 @@ namespace Stationery_Store
         }
 
 
+        public Role LoggedInUserRole { get; private set; }
+
         private void Loginbutton_Click(object sender, EventArgs e)
         {
             Context context = new Context();
 
             string user_name = UserNametextBox.Text;
             string password = PasswordtextBox.Text;
+
             User? user = context.Users.FirstOrDefault(u => u.UserName == user_name);
+
             if (user == null)
             {
                 PassWordMessagelabel.Visible = false;
@@ -28,13 +32,12 @@ namespace Stationery_Store
             {
                 if (user.Password == password)
                 {
-                   
+                    MessageBox.Show(user.UserRole + "  „  ”ÃÌ· «·œŒÊ· »‰Ã«Õ");
 
-                    MessageBox.Show(user.UserRole+"  „  ”ÃÌ· «·œŒÊ· »‰Ã«Õ");
-                    // hide login form
-                    this.Hide();
-                    HomeForm homeForm = new HomeForm(user.UserRole);
-                    homeForm.Show();
+                    LoggedInUserRole = user.UserRole;
+
+                    this.DialogResult = DialogResult.OK;  // „Â„ Ãœ«
+                    this.Close();                         // «ﬁ›· «·›Ê—„ »⁄œ  ”ÃÌ· «·œŒÊ·
                 }
                 else
                 {
@@ -44,5 +47,6 @@ namespace Stationery_Store
                 }
             }
         }
+
     }
 }

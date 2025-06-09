@@ -35,6 +35,14 @@ namespace Stationery_Store.Forms
 
             this.Shown += HomeForm_Shown;
 
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;  // يمنع تغيير الحجم
+            this.MaximizeBox = false;  // يخفي زر التكبير
+            this.MinimizeBox = true;   // يمكن تغييره حسب الحاجة
+            this.SizeGripStyle = SizeGripStyle.Hide;
+
+            this.WindowState = FormWindowState.Maximized;//الهورم يتملى الشاشة
+
+
         }
 
         private void HomeForm_Shown(object sender, EventArgs e)

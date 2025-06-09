@@ -18,11 +18,10 @@ namespace Stationery_Store.Forms
             InitializeComponent();
             dbContext = new Context();
             LoadCategories();
-
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
-
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             searchBox.TextChanged += searchBox_TextChanged;
+            this.FormClosed += CategoryForm_FormClosed;
         }
 
         private void LoadCategories(string filter = "")
@@ -260,9 +259,15 @@ namespace Stationery_Store.Forms
             // Placeholder if needed
         }
 
-        private void CategoryForm_Load(object sender, EventArgs e)
-        {
 
+        private void CategoryForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            dbContext.Dispose();
+        }
+
+        private void CategoryForm_Load_1(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
         }
     }
 }

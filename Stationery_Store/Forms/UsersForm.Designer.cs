@@ -216,6 +216,7 @@
             Controls.Add(dataGridViewUsers);
             Name = "UsersForm";
             Text = "UsersForm";
+            Load += UsersForm_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridViewUsers).EndInit();
             ResumeLayout(false);
             PerformLayout();

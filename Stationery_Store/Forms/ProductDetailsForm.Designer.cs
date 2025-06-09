@@ -11,7 +11,7 @@ namespace Stationery_Store.Forms
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-       
+
 
         #region Windows Form Designer generated code
 
@@ -21,148 +21,156 @@ namespace Stationery_Store.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblDescription = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.txtPrice = new System.Windows.Forms.TextBox();
-            this.lblQuantity = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblName = new Label();
+            txtName = new TextBox();
+            lblDescription = new Label();
+            txtDescription = new TextBox();
+            lblPrice = new Label();
+            txtPrice = new TextBox();
+            lblQuantity = new Label();
+            txtQuantity = new TextBox();
+            lblCategory = new Label();
+            categoryComboBox = new ComboBox();
+            btnSave = new Button();
+            btnCancel = new Button();
+            SuspendLayout();
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(30, 30);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(45, 20);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "الاسم:";
+            lblName.AutoSize = true;
+            lblName.Location = new Point(30, 38);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(47, 20);
+            lblName.TabIndex = 0;
+            lblName.Text = "الاسم:";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(120, 30);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(250, 27);
-            this.txtName.TabIndex = 1;
+            txtName.Location = new Point(120, 38);
+            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(250, 27);
+            txtName.TabIndex = 1;
             // 
             // lblDescription
             // 
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(30, 70);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(54, 20);
-            this.lblDescription.TabIndex = 2;
-            this.lblDescription.Text = "الوصف:";
+            lblDescription.AutoSize = true;
+            lblDescription.Location = new Point(30, 88);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(59, 20);
+            lblDescription.TabIndex = 2;
+            lblDescription.Text = "الوصف:";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(120, 70);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(250, 80);
-            this.txtDescription.TabIndex = 3;
+            txtDescription.Location = new Point(120, 88);
+            txtDescription.Margin = new Padding(3, 4, 3, 4);
+            txtDescription.Multiline = true;
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(250, 99);
+            txtDescription.TabIndex = 3;
             // 
             // lblPrice
             // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(30, 160);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(47, 20);
-            this.lblPrice.TabIndex = 4;
-            this.lblPrice.Text = "السعر:";
+            lblPrice.AutoSize = true;
+            lblPrice.Location = new Point(30, 200);
+            lblPrice.Name = "lblPrice";
+            lblPrice.Size = new Size(49, 20);
+            lblPrice.TabIndex = 4;
+            lblPrice.Text = "السعر:";
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(120, 160);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(125, 27);
-            this.txtPrice.TabIndex = 3;
+            txtPrice.Location = new Point(120, 200);
+            txtPrice.Margin = new Padding(3, 4, 3, 4);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(125, 27);
+            txtPrice.TabIndex = 3;
             // 
             // lblQuantity
             // 
-            this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Location = new System.Drawing.Point(30, 200);
-            this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(53, 20);
-            this.lblQuantity.TabIndex = 6;
-            this.lblQuantity.Text = "الكمية:";
+            lblQuantity.AutoSize = true;
+            lblQuantity.Location = new Point(30, 250);
+            lblQuantity.Name = "lblQuantity";
+            lblQuantity.Size = new Size(51, 20);
+            lblQuantity.TabIndex = 6;
+            lblQuantity.Text = "الكمية:";
             // 
             // txtQuantity
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(120, 200);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(125, 27);
-            this.txtQuantity.TabIndex = 7;
+            txtQuantity.Location = new Point(120, 250);
+            txtQuantity.Margin = new Padding(3, 4, 3, 4);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(125, 27);
+            txtQuantity.TabIndex = 7;
             // 
             // lblCategory
             // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(30, 240);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(59, 20);
-            this.lblCategory.TabIndex = 8;
-            this.lblCategory.Text = "الفئة:";
+            lblCategory.AutoSize = true;
+            lblCategory.Location = new Point(30, 300);
+            lblCategory.Name = "lblCategory";
+            lblCategory.Size = new Size(42, 20);
+            lblCategory.TabIndex = 8;
+            lblCategory.Text = "الفئة:";
             // 
             // categoryComboBox
             // 
-            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(120, 240);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(250, 28);
-            this.categoryComboBox.TabIndex = 9;
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryComboBox.FormattingEnabled = true;
+            categoryComboBox.Location = new Point(120, 300);
+            categoryComboBox.Margin = new Padding(3, 4, 3, 4);
+            categoryComboBox.Name = "categoryComboBox";
+            categoryComboBox.Size = new Size(250, 28);
+            categoryComboBox.TabIndex = 9;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(160, 290);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 35);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "حفظ";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(160, 362);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(100, 44);
+            btnSave.TabIndex = 10;
+            btnSave.Text = "حفظ";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(270, 290);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 35);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "إلغاء";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Location = new Point(270, 362);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(100, 44);
+            btnCancel.TabIndex = 11;
+            btnCancel.Text = "إلغاء";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // ProductDetailsForm
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 400);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.lblCategory);
-            this.Controls.Add(this.txtQuantity);
-            this.Controls.Add(this.lblQuantity);
-            this.Controls.Add(this.txtPrice);
-            this.Controls.Add(this.lblPrice);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.lblDescription);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.lblName);
-            this.Name = "ProductDetailsForm";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.RightToLeftLayout = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "تفاصيل المنتج";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientActiveCaption;
+            ClientSize = new Size(400, 500);
+            Controls.Add(btnCancel);
+            Controls.Add(btnSave);
+            Controls.Add(categoryComboBox);
+            Controls.Add(lblCategory);
+            Controls.Add(txtQuantity);
+            Controls.Add(lblQuantity);
+            Controls.Add(txtPrice);
+            Controls.Add(lblPrice);
+            Controls.Add(txtDescription);
+            Controls.Add(lblDescription);
+            Controls.Add(txtName);
+            Controls.Add(lblName);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "ProductDetailsForm";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "تفاصيل المنتج";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

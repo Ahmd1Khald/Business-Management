@@ -46,12 +46,12 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             SellGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SellGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SellGridView.Location = new Point(557, 23);
+            SellGridView.Location = new Point(557, 46);
             SellGridView.Margin = new Padding(3, 4, 3, 4);
             SellGridView.Name = "SellGridView";
             SellGridView.RightToLeft = RightToLeft.Yes;
             SellGridView.RowHeadersWidth = 51;
-            SellGridView.Size = new Size(504, 373);
+            SellGridView.Size = new Size(504, 350);
             SellGridView.TabIndex = 7;
             // 
             // AddBtn
@@ -61,7 +61,7 @@
             AddBtn.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddBtn.Location = new Point(157, 415);
             AddBtn.Name = "AddBtn";
-            AddBtn.Size = new Size(216, 41);
+            AddBtn.Size = new Size(216, 51);
             AddBtn.TabIndex = 2;
             AddBtn.Text = "إضافة";
             AddBtn.TextImageRelation = TextImageRelation.ImageAboveText;
@@ -102,6 +102,7 @@
             // panel1
             // 
             panel1.AutoSize = true;
+            panel1.BackColor = SystemColors.GradientActiveCaption;
             panel1.Controls.Add(RemoveBtn);
             panel1.Controls.Add(TotalQuantity);
             panel1.Controls.Add(TotalPrice);
@@ -122,7 +123,7 @@
             RemoveBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             RemoveBtn.BackColor = Color.Red;
             RemoveBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            RemoveBtn.Location = new Point(841, 403);
+            RemoveBtn.Location = new Point(557, 403);
             RemoveBtn.Name = "RemoveBtn";
             RemoveBtn.Size = new Size(220, 39);
             RemoveBtn.TabIndex = 9;
@@ -134,9 +135,11 @@
             // 
             TotalQuantity.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             TotalQuantity.AutoSize = true;
-            TotalQuantity.Location = new Point(958, 351);
+            TotalQuantity.BackColor = Color.Azure;
+            TotalQuantity.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TotalQuantity.Location = new Point(1027, 403);
             TotalQuantity.Name = "TotalQuantity";
-            TotalQuantity.Size = new Size(17, 20);
+            TotalQuantity.Size = new Size(18, 20);
             TotalQuantity.TabIndex = 8;
             TotalQuantity.Text = "0";
             // 
@@ -144,9 +147,11 @@
             // 
             TotalPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             TotalPrice.AutoSize = true;
-            TotalPrice.Location = new Point(958, 303);
+            TotalPrice.BackColor = Color.Azure;
+            TotalPrice.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TotalPrice.Location = new Point(1027, 432);
             TotalPrice.Name = "TotalPrice";
-            TotalPrice.Size = new Size(17, 20);
+            TotalPrice.Size = new Size(18, 20);
             TotalPrice.TabIndex = 6;
             TotalPrice.Text = "0";
             // 
@@ -155,7 +160,7 @@
             SellBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             SellBtn.BackColor = Color.Green;
             SellBtn.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SellBtn.Location = new Point(650, 467);
+            SellBtn.Location = new Point(656, 467);
             SellBtn.Name = "SellBtn";
             SellBtn.Size = new Size(295, 53);
             SellBtn.TabIndex = 4;

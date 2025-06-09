@@ -57,7 +57,7 @@
             groupBox1.Location = new Point(12, 121);
             groupBox1.Name = "groupBox1";
             groupBox1.RightToLeft = RightToLeft.Yes;
-            groupBox1.Size = new Size(827, 259);
+            groupBox1.Size = new Size(798, 259);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "بيانات البحث";
@@ -68,18 +68,17 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 26);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.RightToLeft = RightToLeft.Yes;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(815, 227);
+            dataGridView1.Size = new Size(786, 227);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += ReportDatagrid_CellContentClick;
             // 
             // button1
             // 
             button1.BackColor = SystemColors.ControlDark;
-            button1.Location = new Point(201, 45);
+            button1.Location = new Point(196, 36);
             button1.Name = "button1";
-            button1.Size = new Size(190, 69);
+            button1.Size = new Size(227, 69);
             button1.TabIndex = 3;
             button1.Text = "عرض التقرير";
             button1.UseVisualStyleBackColor = false;
@@ -88,7 +87,7 @@
             // button2
             // 
             button2.BackColor = SystemColors.ControlDark;
-            button2.Location = new Point(11, 45);
+            button2.Location = new Point(6, 36);
             button2.Name = "button2";
             button2.Size = new Size(184, 69);
             button2.TabIndex = 4;
@@ -102,10 +101,10 @@
             groupBox2.Controls.Add(button2);
             groupBox2.Controls.Add(button1);
             groupBox2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(426, 386);
+            groupBox2.Location = new Point(375, 386);
             groupBox2.Name = "groupBox2";
             groupBox2.RightToLeft = RightToLeft.Yes;
-            groupBox2.Size = new Size(413, 120);
+            groupBox2.Size = new Size(429, 120);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             groupBox2.Text = "اجراءات التقرير";
@@ -158,8 +157,7 @@
             groupBox3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(18, 386);
             groupBox3.Name = "groupBox3";
-            groupBox3.RightToLeft = RightToLeft.Yes;
-            groupBox3.Size = new Size(385, 120);
+            groupBox3.Size = new Size(351, 120);
             groupBox3.TabIndex = 10;
             groupBox3.TabStop = false;
             groupBox3.Text = "نتائج البيع";
@@ -183,7 +181,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(267, 89);
+            label5.Location = new Point(259, 71);
             label5.Name = "label5";
             label5.Size = new Size(91, 25);
             label5.TabIndex = 13;
@@ -193,7 +191,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(272, 45);
+            label3.Location = new Point(259, 36);
             label3.Name = "label3";
             label3.Size = new Size(86, 23);
             label3.TabIndex = 11;

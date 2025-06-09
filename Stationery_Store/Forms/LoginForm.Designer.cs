@@ -41,46 +41,48 @@
             // 
             UserNamelabel.AutoSize = true;
             UserNamelabel.Font = new Font("PT Bold Heading", 12F, FontStyle.Regular, GraphicsUnit.Point, 178);
-            UserNamelabel.Location = new Point(106, 115);
+            UserNamelabel.ForeColor = SystemColors.ActiveCaptionText;
+            UserNamelabel.Location = new Point(523, 120);
             UserNamelabel.Name = "UserNamelabel";
-            UserNamelabel.Size = new Size(144, 35);
+            UserNamelabel.Size = new Size(118, 35);
             UserNamelabel.TabIndex = 0;
-            UserNamelabel.Text = "User Name";
+            UserNamelabel.Text = "اسم المستخدم";
             // 
             // PassWordlabel
             // 
             PassWordlabel.AutoSize = true;
             PassWordlabel.Font = new Font("PT Bold Heading", 12F, FontStyle.Regular, GraphicsUnit.Point, 178);
-            PassWordlabel.Location = new Point(106, 199);
+            PassWordlabel.Location = new Point(523, 203);
             PassWordlabel.Name = "PassWordlabel";
-            PassWordlabel.Size = new Size(128, 35);
+            PassWordlabel.Size = new Size(89, 35);
             PassWordlabel.TabIndex = 1;
-            PassWordlabel.Text = "Password";
+            PassWordlabel.Text = "كلمة السر";
             // 
             // UserNametextBox
             // 
-            UserNametextBox.Location = new Point(292, 122);
+            UserNametextBox.Location = new Point(235, 128);
             UserNametextBox.Name = "UserNametextBox";
-            UserNametextBox.Size = new Size(176, 27);
+            UserNametextBox.Size = new Size(271, 27);
             UserNametextBox.TabIndex = 2;
             // 
             // PasswordtextBox
             // 
-            PasswordtextBox.Location = new Point(292, 206);
+            PasswordtextBox.Location = new Point(235, 211);
             PasswordtextBox.Name = "PasswordtextBox";
             PasswordtextBox.PasswordChar = '*';
-            PasswordtextBox.Size = new Size(176, 27);
+            PasswordtextBox.Size = new Size(271, 27);
             PasswordtextBox.TabIndex = 3;
             // 
             // Loginbutton
             // 
-            Loginbutton.BackColor = Color.PeachPuff;
+            Loginbutton.BackColor = Color.Azure;
             Loginbutton.Font = new Font("PT Bold Heading", 9F, FontStyle.Regular, GraphicsUnit.Point, 178);
-            Loginbutton.Location = new Point(292, 290);
+            Loginbutton.ForeColor = SystemColors.ControlText;
+            Loginbutton.Location = new Point(284, 288);
             Loginbutton.Name = "Loginbutton";
-            Loginbutton.Size = new Size(112, 53);
+            Loginbutton.Size = new Size(176, 53);
             Loginbutton.TabIndex = 4;
-            Loginbutton.Text = "Login";
+            Loginbutton.Text = "تسجيل الدخول";
             Loginbutton.UseVisualStyleBackColor = false;
             Loginbutton.Click += Loginbutton_Click;
             // 
@@ -89,8 +91,9 @@
             UserNameMessagelabel.AutoSize = true;
             UserNameMessagelabel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             UserNameMessagelabel.ForeColor = Color.Red;
-            UserNameMessagelabel.Location = new Point(533, 122);
+            UserNameMessagelabel.Location = new Point(63, 132);
             UserNameMessagelabel.Name = "UserNameMessagelabel";
+            UserNameMessagelabel.RightToLeft = RightToLeft.Yes;
             UserNameMessagelabel.Size = new Size(55, 23);
             UserNameMessagelabel.TabIndex = 5;
             UserNameMessagelabel.Text = "label1";
@@ -101,8 +104,9 @@
             PassWordMessagelabel.AutoSize = true;
             PassWordMessagelabel.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             PassWordMessagelabel.ForeColor = Color.Red;
-            PassWordMessagelabel.Location = new Point(533, 213);
+            PassWordMessagelabel.Location = new Point(63, 215);
             PassWordMessagelabel.Name = "PassWordMessagelabel";
+            PassWordMessagelabel.RightToLeft = RightToLeft.Yes;
             PassWordMessagelabel.Size = new Size(55, 23);
             PassWordMessagelabel.TabIndex = 6;
             PassWordMessagelabel.Text = "label2";
@@ -114,7 +118,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(800, 451);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(749, 441);
             Controls.Add(PassWordMessagelabel);
             Controls.Add(UserNameMessagelabel);
             Controls.Add(Loginbutton);
@@ -122,6 +127,7 @@
             Controls.Add(UserNametextBox);
             Controls.Add(PassWordlabel);
             Controls.Add(UserNamelabel);
+            DoubleBuffered = true;
             Name = "LoginForm";
             Text = "MainForm";
             ResumeLayout(false);

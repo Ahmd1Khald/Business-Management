@@ -39,34 +39,40 @@
             // labelDate
             // 
             labelDate.AutoSize = true;
-            labelDate.Location = new Point(61, 9);
+            labelDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelDate.Location = new Point(713, 19);
             labelDate.Name = "labelDate";
-            labelDate.Size = new Size(50, 20);
+            labelDate.RightToLeft = RightToLeft.Yes;
+            labelDate.Size = new Size(59, 23);
             labelDate.TabIndex = 0;
             labelDate.Text = "label1";
             // 
             // labelTotalPrice
             // 
             labelTotalPrice.AutoSize = true;
-            labelTotalPrice.Location = new Point(61, 48);
+            labelTotalPrice.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelTotalPrice.Location = new Point(713, 58);
             labelTotalPrice.Name = "labelTotalPrice";
-            labelTotalPrice.Size = new Size(50, 20);
+            labelTotalPrice.RightToLeft = RightToLeft.Yes;
+            labelTotalPrice.Size = new Size(59, 23);
             labelTotalPrice.TabIndex = 1;
             labelTotalPrice.Text = "label1";
             // 
             // labelTotalQuantity
             // 
             labelTotalQuantity.AutoSize = true;
-            labelTotalQuantity.Location = new Point(61, 88);
+            labelTotalQuantity.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            labelTotalQuantity.Location = new Point(713, 98);
             labelTotalQuantity.Name = "labelTotalQuantity";
-            labelTotalQuantity.Size = new Size(50, 20);
+            labelTotalQuantity.RightToLeft = RightToLeft.Yes;
+            labelTotalQuantity.Size = new Size(59, 23);
             labelTotalQuantity.TabIndex = 2;
             labelTotalQuantity.Text = "label1";
             // 
             // invoiceGridView
             // 
             invoiceGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            invoiceGridView.Location = new Point(12, 133);
+            invoiceGridView.Location = new Point(12, 148);
             invoiceGridView.Name = "invoiceGridView";
             invoiceGridView.RowHeadersWidth = 51;
             invoiceGridView.Size = new Size(776, 188);
@@ -74,7 +80,8 @@
             // 
             // printButton
             // 
-            printButton.Location = new Point(84, 377);
+            printButton.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            printButton.Location = new Point(268, 358);
             printButton.Name = "printButton";
             printButton.Size = new Size(276, 45);
             printButton.TabIndex = 4;
@@ -86,6 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(printButton);
             Controls.Add(invoiceGridView);

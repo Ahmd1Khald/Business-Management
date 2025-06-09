@@ -235,7 +235,7 @@ namespace Stationery_Store.Forms
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            BackColor = Color.FromArgb(240, 240, 240);
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(800, 532);
             Controls.Add(btnDeleteProduct);
             Controls.Add(btnEditProduct);

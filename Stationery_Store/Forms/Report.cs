@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Stationery_Store.Entities;
 using System.Drawing.Printing;
-
 
 namespace Stationery_Store.Forms
 {
@@ -17,6 +13,7 @@ namespace Stationery_Store.Forms
     {
         Context context = new Context();
 
+        private List<dynamic> filteredOrders; 
 
         public Report()
         {
@@ -24,26 +21,9 @@ namespace Stationery_Store.Forms
             printDocument1.PrintPage += printDocument1_PrintPage;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            PrintPreviewDialog preview = new PrintPreviewDialog();
-            preview.Document = printDocument1;
-            preview.ShowDialog();
-        }
-
         private void Report_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
-        }
-
-        private void ReportDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,8 +31,7 @@ namespace Stationery_Store.Forms
             DateTime fromDate = dateTimePicker2.Value.Date;
             DateTime toDate = dateTimePicker1.Value.Date;
 
-            // جلب الطلبات من قاعدة البيانات مع أول منتج في كل طلب
-            var filteredOrders = context.Orders
+            filteredOrders = context.Orders
                 .Where(o => o.Date.Date >= fromDate && o.Date.Date <= toDate)
                 .Select(o => new
                 {
@@ -60,9 +39,9 @@ namespace Stationery_Store.Forms
                     Date = o.Date,
                     TotalAmount = o.TotalAmount,
                     TotalPrice = o.TotalPrice,
-                    ProductName = o.OrderItems.FirstOrDefault().Product.Name
+                    ProductName = o.OrderItems.Select(oi => oi.Product.Name).FirstOrDefault() ?? "لا يوجد منتج"
                 })
-                .ToList();
+                .ToList<dynamic>();
 
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
@@ -111,24 +90,26 @@ namespace Stationery_Store.Forms
 
             dataGridView1.DataSource = filteredOrders;
 
-            // حساب الإجماليات
-            int totalAmount = filteredOrders.Sum(o => o.TotalAmount);
-            double totalRevenue = filteredOrders.Sum(o => o.TotalPrice);
+            int totalAmount = filteredOrders.Sum(o => (int)o.TotalAmount);
+            double totalRevenue = filteredOrders.Sum(o => (double)o.TotalPrice);
 
             label4.Text = $"{totalAmount}";
             label6.Text = $"{totalRevenue:C}";
+
+            MessageBox.Show($"تم تحميل {filteredOrders.Count} طلب.");
+
         }
 
-
-        private void label3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            PrintPreviewDialog preview = new PrintPreviewDialog();
+            preview.Document = printDocument1;
+            preview.ShowDialog();
         }
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            var orders = dataGridView1.DataSource as List<Order>;
-            if (orders == null || orders.Count == 0)
+            if (filteredOrders == null || filteredOrders.Count == 0)
             {
                 e.Graphics.DrawString("لا توجد بيانات لعرضها", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, 100, 100);
                 return;
@@ -142,36 +123,37 @@ namespace Stationery_Store.Forms
             float y = e.MarginBounds.Top;
 
             StringFormat formatRight = new StringFormat();
-            formatRight.Alignment = StringAlignment.Far;  // محاذاة يمين
+            formatRight.Alignment = StringAlignment.Far;  
 
             e.Graphics.DrawString("تقرير الطلبات", titleFont, Brushes.Black, new RectangleF(e.MarginBounds.Left, y, e.MarginBounds.Width, lineHeight), formatRight);
             y += 40;
 
-            // عناوين الأعمدة
             e.Graphics.DrawString("رقم الطلب", headerFont, Brushes.Black, xRight - 0, y, formatRight);
             e.Graphics.DrawString("تاريخ الطلب", headerFont, Brushes.Black, xRight - 100, y, formatRight);
             e.Graphics.DrawString("الكمية", headerFont, Brushes.Black, xRight - 220, y, formatRight);
             e.Graphics.DrawString("الإجمالي", headerFont, Brushes.Black, xRight - 300, y, formatRight);
             y += lineHeight;
 
-            // البيانات
-            foreach (var order in orders)
+            foreach (var order in filteredOrders)
             {
-                e.Graphics.DrawString(order.ID.ToString(), cellFont, Brushes.Black, xRight - 0, y, formatRight);
-                e.Graphics.DrawString(order.Date.ToShortDateString(), cellFont, Brushes.Black, xRight - 100, y, formatRight);
+                e.Graphics.DrawString(order.OrderID.ToString(), cellFont, Brushes.Black, xRight - 0, y, formatRight);
+                e.Graphics.DrawString(((DateTime)order.Date).ToShortDateString(), cellFont, Brushes.Black, xRight - 100, y, formatRight);
                 e.Graphics.DrawString(order.TotalAmount.ToString(), cellFont, Brushes.Black, xRight - 220, y, formatRight);
-                e.Graphics.DrawString(order.TotalPrice.ToString("C"), cellFont, Brushes.Black, xRight - 300, y, formatRight);
+                e.Graphics.DrawString(((double)order.TotalPrice).ToString("C"), cellFont, Brushes.Black, xRight - 300, y, formatRight);
                 y += lineHeight;
             }
 
-            // الإجماليات
             y += 20;
-            int totalAmount = orders.Sum(o => o.TotalAmount);
-            double totalPrice = orders.Sum(o => o.TotalPrice);
+            int totalAmount = filteredOrders.Sum(o => (int)o.TotalAmount);
+            double totalPrice = filteredOrders.Sum(o => (double)o.TotalPrice);
 
             e.Graphics.DrawString($"إجمالي الكمية: {totalAmount}", headerFont, Brushes.Black, new RectangleF(e.MarginBounds.Left, y, e.MarginBounds.Width, lineHeight), formatRight);
             y += lineHeight;
             e.Graphics.DrawString($"إجمالي السعر: {totalPrice:C}", headerFont, Brushes.Black, new RectangleF(e.MarginBounds.Left, y, e.MarginBounds.Width, lineHeight), formatRight);
         }
+
+        private void label3_Click(object sender, EventArgs e) { }
+        private void ReportDatagrid_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) { }
     }
 }

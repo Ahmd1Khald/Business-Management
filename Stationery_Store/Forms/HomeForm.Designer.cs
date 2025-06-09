@@ -66,7 +66,8 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 38);
+            panel1.RightToLeft = RightToLeft.Yes;
+            panel1.Size = new Size(918, 38);
             panel1.TabIndex = 0;
             // 
             // label1
@@ -102,7 +103,7 @@
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 38);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(187, 412);
+            sidebar.Size = new Size(191, 479);
             sidebar.TabIndex = 1;
             // 
             // panel2
@@ -239,7 +240,7 @@
             buttonUsers.ForeColor = Color.Black;
             buttonUsers.Image = (Image)resources.GetObject("buttonUsers.Image");
             buttonUsers.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonUsers.Location = new Point(0, 0);
+            buttonUsers.Location = new Point(0, -3);
             buttonUsers.Name = "buttonUsers";
             buttonUsers.Size = new Size(184, 62);
             buttonUsers.TabIndex = 2;
@@ -256,7 +257,8 @@
             // HomeForm
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.GradientActiveCaption;
+            ClientSize = new Size(918, 517);
             Controls.Add(sidebar);
             Controls.Add(panel1);
             IsMdiContainer = true;

@@ -23,6 +23,7 @@ namespace Stationery_Store.Forms
         private void UsersForm_Load(object sender, EventArgs e)
         {
             LoadUsers();
+            this.ControlBox = false;
         }
 
         private void LoadUsers()

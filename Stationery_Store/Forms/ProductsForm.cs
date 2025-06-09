@@ -42,6 +42,12 @@ namespace Stationery_Store.Forms
             stockStatusComboBox.SelectedIndexChanged += StockStatus_SelectedIndexChanged;
             productsGridView.Resize += ProductsGridView_Resize; // Add resize event handler
             this.Resize += ProductsForm_Resize; // Hook up form resize event
+
+            // Apply hover effects to pagination buttons
+            SetButtonHoverEffects(btnFirst);
+            SetButtonHoverEffects(btnPrev);
+            SetButtonHoverEffects(btnNext);
+            SetButtonHoverEffects(btnLast);
         }
 
         private void ProductsGridView_Resize(object sender, EventArgs e)
@@ -63,10 +69,10 @@ namespace Stationery_Store.Forms
             paginationPanel.BackColor = Color.White;
 
             // Configure navigation buttons
-            btnFirst.Text = "<<";
-            btnPrev.Text = "<";
-            btnNext.Text = ">";
-            btnLast.Text = ">>";
+            btnFirst.Text = "الأول";
+            btnPrev.Text = "السابق";
+            btnNext.Text = "التالي";
+            btnLast.Text = "الأخير";
 
             // Configure page info label
             lblPageInfo.AutoSize = true;
@@ -642,6 +648,20 @@ namespace Stationery_Store.Forms
             btnAddProduct_Click(sender, e);
         }
 
-       
+        private void SetButtonHoverEffects(Button button)
+        {
+            Color originalBackColor = button.BackColor;
+            Color hoverColor = Color.FromArgb(0, 120, 215); // Blue color for hover
+
+            button.MouseEnter += (sender, e) =>
+            {
+                button.BackColor = hoverColor;
+            };
+
+            button.MouseLeave += (sender, e) =>
+            {
+                button.BackColor = originalBackColor;
+            };
+        }
     }
 } 

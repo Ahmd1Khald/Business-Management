@@ -314,70 +314,70 @@ namespace Stationery_Store.Forms
             paginationPanel.Controls.Add(btnNext);
             paginationPanel.Controls.Add(btnLast);
             paginationPanel.Controls.Add(lblPageInfo);
-            paginationPanel.Location = new Point(225, 475);
+            paginationPanel.Location = new Point(160, 475);
             paginationPanel.Margin = new Padding(3, 4, 3, 4);
             paginationPanel.Name = "paginationPanel";
-            paginationPanel.Size = new Size(350, 44);
+            paginationPanel.Size = new Size(480, 44);
             paginationPanel.TabIndex = 9;
             // 
             // btnFirst
             // 
             btnFirst.Anchor = AnchorStyles.None;
-            btnFirst.BackColor = Color.FromArgb(0, 120, 215);
+            btnFirst.BackColor = Color.FromArgb(180, 230, 230, 230);
             btnFirst.FlatAppearance.BorderSize = 0;
             btnFirst.FlatStyle = FlatStyle.Flat;
             btnFirst.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnFirst.ForeColor = Color.White;
-            btnFirst.Location = new Point(300, 8);
+            btnFirst.ForeColor = Color.Black;
+            btnFirst.Location = new Point(400, 8);
             btnFirst.Name = "btnFirst";
-            btnFirst.Size = new Size(40, 28);
+            btnFirst.Size = new Size(70, 28);
             btnFirst.TabIndex = 1;
-            btnFirst.Text = "<<";
+            btnFirst.Text = "الأول";
             btnFirst.UseVisualStyleBackColor = false;
             // 
             // btnPrev
             // 
             btnPrev.Anchor = AnchorStyles.None;
-            btnPrev.BackColor = Color.FromArgb(0, 120, 215);
+            btnPrev.BackColor = Color.FromArgb(180, 230, 230, 230);
             btnPrev.FlatAppearance.BorderSize = 0;
             btnPrev.FlatStyle = FlatStyle.Flat;
             btnPrev.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnPrev.ForeColor = Color.White;
-            btnPrev.Location = new Point(255, 8);
+            btnPrev.ForeColor = Color.Black;
+            btnPrev.Location = new Point(315, 8);
             btnPrev.Name = "btnPrev";
-            btnPrev.Size = new Size(40, 28);
+            btnPrev.Size = new Size(80, 28);
             btnPrev.TabIndex = 2;
-            btnPrev.Text = "<";
+            btnPrev.Text = "السابق";
             btnPrev.UseVisualStyleBackColor = false;
             // 
             // btnNext
             // 
             btnNext.Anchor = AnchorStyles.None;
-            btnNext.BackColor = Color.FromArgb(0, 120, 215);
+            btnNext.BackColor = Color.FromArgb(180, 230, 230, 230);
             btnNext.FlatAppearance.BorderSize = 0;
             btnNext.FlatStyle = FlatStyle.Flat;
             btnNext.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnNext.ForeColor = Color.White;
-            btnNext.Location = new Point(105, 8);
+            btnNext.ForeColor = Color.Black;
+            btnNext.Location = new Point(85, 8);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(40, 28);
+            btnNext.Size = new Size(80, 28);
             btnNext.TabIndex = 3;
-            btnNext.Text = ">";
+            btnNext.Text = "التالي";
             btnNext.UseVisualStyleBackColor = false;
             // 
             // btnLast
             // 
             btnLast.Anchor = AnchorStyles.None;
-            btnLast.BackColor = Color.FromArgb(0, 120, 215);
+            btnLast.BackColor = Color.FromArgb(180, 230, 230, 230);
             btnLast.FlatAppearance.BorderSize = 0;
             btnLast.FlatStyle = FlatStyle.Flat;
             btnLast.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnLast.ForeColor = Color.White;
-            btnLast.Location = new Point(60, 8);
+            btnLast.ForeColor = Color.Black;
+            btnLast.Location = new Point(0, 8);
             btnLast.Name = "btnLast";
-            btnLast.Size = new Size(40, 28);
+            btnLast.Size = new Size(70, 28);
             btnLast.TabIndex = 4;
-            btnLast.Text = ">>";
+            btnLast.Text = "الأخير";
             btnLast.UseVisualStyleBackColor = false;
             // 
             // lblPageInfo
@@ -385,7 +385,7 @@ namespace Stationery_Store.Forms
             lblPageInfo.Anchor = AnchorStyles.None;
             lblPageInfo.AutoSize = true;
             lblPageInfo.Font = new Font("Segoe UI", 10F);
-            lblPageInfo.Location = new Point(150, 10);
+            lblPageInfo.Location = new Point(200, 13);
             lblPageInfo.Name = "lblPageInfo";
             lblPageInfo.Size = new Size(19, 23);
             lblPageInfo.TabIndex = 5;

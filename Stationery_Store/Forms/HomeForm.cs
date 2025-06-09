@@ -78,7 +78,7 @@ namespace Stationery_Store.Forms
         {
             if (sidebarExpand)
             {
-                sidebar.Width -= 10;
+                sidebar.Width -= 27;
                 if (sidebar.Width <= 66)
                 {
                     sidebarExpand = false;
@@ -87,7 +87,7 @@ namespace Stationery_Store.Forms
             }
             else
             {
-                sidebar.Width += 10;
+                sidebar.Width += 27;
                 if (sidebar.Width >= 187)
                 {
                     sidebarExpand = true;

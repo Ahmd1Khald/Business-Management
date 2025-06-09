@@ -157,8 +157,15 @@ namespace Stationery_Store.Forms
             var category = dbContext.Categories.Find(selectedId);
             if (category != null)
             {
-                var result = MessageBox.Show($"هل أنت متأكد أنك تريد حذف الصنف '{category.Name}'؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                // ✅ تحقق هل في منتجات مرتبطة
+                bool hasRelatedProducts = dbContext.Products.Any(p => p.CategoryId == selectedId);
+                if (hasRelatedProducts)
+                {
+                    MessageBox.Show("لا يمكن حذف هذا الصنف لأنه يحتوي على منتجات مرتبطة به.", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                var result = MessageBox.Show($"هل أنت متأكد أنك تريد حذف الصنف '{category.Name}'؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     dbContext.Categories.Remove(category);
@@ -173,6 +180,7 @@ namespace Stationery_Store.Forms
                 SetStatus("الصنف غير موجود", Color.Red);
             }
         }
+
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {

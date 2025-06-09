@@ -76,91 +76,81 @@ namespace Stationery_Store.Forms
             filterPanel.Controls.Add(lblCategory);
             filterPanel.Controls.Add(searchTextBox);
             filterPanel.Controls.Add(lblSearch);
-            filterPanel.Location = new Point(20, 0);
-            filterPanel.Margin = new Padding(3, 4, 3, 4);
+            filterPanel.Location = new Point(12, 10);
             filterPanel.Name = "filterPanel";
-            filterPanel.RightToLeft = RightToLeft.Yes;
-            filterPanel.Size = new Size(770, 100);
-            filterPanel.TabIndex = 4;
+            filterPanel.Size = new Size(770, 90);
+            filterPanel.TabIndex = 8;
             // 
             // stockStatusComboBox
             // 
-            stockStatusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             stockStatusComboBox.Font = new Font("Segoe UI", 10F);
             stockStatusComboBox.FormattingEnabled = true;
-            stockStatusComboBox.Location = new Point(446, 50);
-            stockStatusComboBox.Margin = new Padding(3, 4, 3, 4);
+            stockStatusComboBox.Location = new Point(10, 50);
             stockStatusComboBox.Name = "stockStatusComboBox";
-            stockStatusComboBox.Size = new Size(132, 31);
-            stockStatusComboBox.TabIndex = 8;
+            stockStatusComboBox.Size = new Size(150, 31);
+            stockStatusComboBox.TabIndex = 7;
             // 
             // lblStockStatus
             // 
             lblStockStatus.AutoSize = true;
             lblStockStatus.Font = new Font("Segoe UI", 10F);
-            lblStockStatus.Location = new Point(474, 19);
+            lblStockStatus.Location = new Point(165, 53);
             lblStockStatus.Name = "lblStockStatus";
-            lblStockStatus.Size = new Size(104, 23);
-            lblStockStatus.TabIndex = 7;
+            lblStockStatus.Size = new Size(92, 23);
+            lblStockStatus.TabIndex = 6;
             lblStockStatus.Text = "حالة المخزون:";
             // 
             // txtMaxPrice
             // 
             txtMaxPrice.Font = new Font("Segoe UI", 10F);
-            txtMaxPrice.Location = new Point(340, 50);
-            txtMaxPrice.Margin = new Padding(3, 4, 3, 4);
+            txtMaxPrice.Location = new Point(270, 50);
             txtMaxPrice.Name = "txtMaxPrice";
             txtMaxPrice.PlaceholderText = "أقصى سعر";
             txtMaxPrice.Size = new Size(100, 30);
-            txtMaxPrice.TabIndex = 6;
+            txtMaxPrice.TabIndex = 5;
             // 
             // lblPriceRange
             // 
             lblPriceRange.AutoSize = true;
             lblPriceRange.Font = new Font("Segoe UI", 10F);
-            lblPriceRange.Location = new Point(343, 19);
+            lblPriceRange.Location = new Point(480, 53);
             lblPriceRange.Name = "lblPriceRange";
-            lblPriceRange.Size = new Size(97, 23);
-            lblPriceRange.TabIndex = 5;
+            lblPriceRange.Size = new Size(82, 23);
+            lblPriceRange.TabIndex = 4;
             lblPriceRange.Text = "نطاق السعر:";
-            lblPriceRange.Click += lblPriceRange_Click;
             // 
             // txtMinPrice
             // 
             txtMinPrice.Font = new Font("Segoe UI", 10F);
-            txtMinPrice.Location = new Point(230, 50);
-            txtMinPrice.Margin = new Padding(3, 4, 3, 4);
+            txtMinPrice.Location = new Point(375, 50);
             txtMinPrice.Name = "txtMinPrice";
             txtMinPrice.PlaceholderText = "أدنى سعر";
             txtMinPrice.Size = new Size(100, 30);
-            txtMinPrice.TabIndex = 4;
+            txtMinPrice.TabIndex = 3;
             // 
             // categoryComboBox
             // 
-            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             categoryComboBox.Font = new Font("Segoe UI", 10F);
             categoryComboBox.FormattingEnabled = true;
-            categoryComboBox.Location = new Point(10, 50);
-            categoryComboBox.Margin = new Padding(3, 4, 3, 4);
+            categoryComboBox.Location = new Point(270, 10);
             categoryComboBox.Name = "categoryComboBox";
-            categoryComboBox.Size = new Size(200, 31);
+            categoryComboBox.Size = new Size(180, 31);
             categoryComboBox.TabIndex = 3;
             // 
             // lblCategory
             // 
             lblCategory.AutoSize = true;
             lblCategory.Font = new Font("Segoe UI", 10F);
-            lblCategory.Location = new Point(162, 19);
+            lblCategory.Location = new Point(455, 13);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(72, 23);
+            lblCategory.Size = new Size(62, 23);
             lblCategory.TabIndex = 2;
             lblCategory.Text = "الأصناف:";
             // 
             // searchTextBox
             // 
             searchTextBox.Font = new Font("Segoe UI", 10F);
-            searchTextBox.Location = new Point(584, 51);
-            searchTextBox.Margin = new Padding(3, 4, 3, 4);
+            searchTextBox.Location = new Point(530, 10);
             searchTextBox.Name = "searchTextBox";
             searchTextBox.PlaceholderText = "ابحث عن منتج...";
             searchTextBox.Size = new Size(169, 30);
@@ -170,7 +160,7 @@ namespace Stationery_Store.Forms
             // 
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Segoe UI", 10F);
-            lblSearch.Location = new Point(689, 19);
+            lblSearch.Location = new Point(700, 13);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(46, 23);
             lblSearch.TabIndex = 0;

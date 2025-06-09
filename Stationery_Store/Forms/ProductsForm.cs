@@ -125,7 +125,9 @@ namespace Stationery_Store.Forms
                 })
                 .ToList();
 
-            productsGridView.DataSource = products;
+            productsGridView.DataSource = null; // Explicitly clear the data source
+            productsGridView.DataSource = products; // Re-assign the new data
+            productsGridView.Refresh(); // Force the DataGridView to refresh its display
             UpdateTotalProductsLabel(products.Count);
         }
 

@@ -3,23 +3,32 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Stationery_Store.Forms
 {
     public partial class CategoryForm : Form
     {
         private Context dbContext;
+        private Timer statusTimer;
+        private int blinkCount = 0;
 
         public CategoryForm()
         {
             InitializeComponent();
             dbContext = new Context();
             LoadCategories();
+
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
+          
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            searchBox.TextChanged += searchBox_TextChanged;
         }
 
-        private void LoadCategories()
+        private void LoadCategories(string filter = "")
         {
             var categories = dbContext.Categories
+                .Where(c => string.IsNullOrEmpty(filter) || c.Name.Contains(filter))
                 .Select(c => new
                 {
                     c.ID,
@@ -30,7 +39,6 @@ namespace Stationery_Store.Forms
 
             dataGridView1.DataSource = categories;
 
-            // Customizing look
             dataGridView1.Columns["ID"].HeaderText = "المعرف";
             dataGridView1.Columns["Name"].HeaderText = "اسم الصنف";
             dataGridView1.Columns["Description"].HeaderText = "الوصف";
@@ -38,16 +46,30 @@ namespace Stationery_Store.Forms
             dataGridView1.Columns["ID"].Width = 60;
             dataGridView1.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns["Description"].Width = 200;
+            dataGridView1.AllowUserToResizeColumns = false;
 
-            dataGridView1.Columns["Name"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                col.Resizable = DataGridViewTriState.False;
+
+            }
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkBlue;
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10, FontStyle.Bold);
-        }
 
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (i % 2 == 0)
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.LightCyan;
+                else
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.WhiteSmoke;
+            }
+
+            dataGridView1.ClearSelection();
+        }
 
         private void ClearInputFields()
         {
@@ -62,7 +84,13 @@ namespace Stationery_Store.Forms
 
             if (string.IsNullOrEmpty(name))
             {
-                SetStatus("ادخل اسم الصنف", Color.Red);
+                SetStatus("يرجى إدخال اسم الصنف", Color.Red);
+                return;
+            }
+
+            if (dbContext.Categories.Any(c => c.Name == name))
+            {
+                SetStatus("هذا الصنف موجود بالفعل", Color.Red);
                 return;
             }
 
@@ -75,27 +103,41 @@ namespace Stationery_Store.Forms
             dbContext.Categories.Add(newCategory);
             dbContext.SaveChanges();
             LoadCategories();
+            ClearInputFields();
             SetStatus("تمت إضافة الصنف بنجاح", Color.Green);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         private void UpdateCategoryBtn_Click(object sender, EventArgs e)
         {
             if (!TryGetSelectedCategoryId(out int selectedId))
             {
-                SetStatus("اختر صنف صالح للتحديث", Color.Red);
+                SetStatus("اختر صنف للتحديث", Color.Red);
+                return;
+            }
+
+            string name = textBox1.Text.Trim();
+            string description = textBox2.Text.Trim();
+
+            if (string.IsNullOrEmpty(name))
+            {
+                SetStatus("يرجى إدخال اسم الصنف", Color.Red);
+                return;
+            }
+
+            if (dbContext.Categories.Any(c => c.Name == name && c.ID != selectedId))
+            {
+                SetStatus("يوجد صنف آخر بنفس الاسم", Color.Red);
                 return;
             }
 
             var category = dbContext.Categories.Find(selectedId);
             if (category != null)
             {
-                category.Name = textBox1.Text.Trim();
-                category.Description = textBox2.Text.Trim();
-
+                category.Name = name;
+                category.Description = description;
                 dbContext.SaveChanges();
                 LoadCategories();
+                ClearInputFields();
                 SetStatus("تم تحديث الصنف", Color.Green);
             }
             else
@@ -115,10 +157,16 @@ namespace Stationery_Store.Forms
             var category = dbContext.Categories.Find(selectedId);
             if (category != null)
             {
-                dbContext.Categories.Remove(category);
-                dbContext.SaveChanges();
-                LoadCategories();
-                SetStatus("تم حذف الصنف", Color.Green);
+                var result = MessageBox.Show($"هل أنت متأكد أنك تريد حذف الصنف '{category.Name}'؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    dbContext.Categories.Remove(category);
+                    dbContext.SaveChanges();
+                    LoadCategories();
+                    ClearInputFields();
+                    SetStatus("تم حذف الصنف", Color.Green);
+                }
             }
             else
             {
@@ -136,20 +184,27 @@ namespace Stationery_Store.Forms
                 textBox2.Text = dataGridView1.CurrentRow.Cells["Description"].Value?.ToString();
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_MouseUp(object sender, MouseEventArgs e)
         {
-            // لا حاجة للكود هنا في الوقت الحالي
+            var hit = dataGridView1.HitTest(e.X, e.Y);
+
+            if (hit.Type == DataGridViewHitTestType.None ||
+                hit.Type == DataGridViewHitTestType.ColumnHeader ||
+                hit.Type == DataGridViewHitTestType.RowHeader)
+            {
+                dataGridView1.ClearSelection();
+                ClearInputFields();
+            }
         }
 
-        // ✅ دالة مساعدة للحصول على ID من الصف المحدد بأمان
+
         private bool TryGetSelectedCategoryId(out int categoryId)
         {
             categoryId = -1;
 
             if (dataGridView1.CurrentRow == null ||
                 dataGridView1.CurrentRow.IsNewRow ||
-                dataGridView1.CurrentRow.Cells["Id"].Value == null)
+                dataGridView1.CurrentRow.Cells["ID"].Value == null)
             {
                 return false;
             }
@@ -157,16 +212,44 @@ namespace Stationery_Store.Forms
             return int.TryParse(dataGridView1.CurrentRow.Cells["ID"].Value.ToString(), out categoryId);
         }
 
-        // ✅ دالة مساعدة لعرض رسالة الحالة
         private void SetStatus(string message, Color color)
         {
             CategoryStatuslbl.Text = message;
             CategoryStatuslbl.ForeColor = color;
+            blinkCount = 0;
+
+            if (statusTimer == null)
+            {
+                statusTimer = new Timer();
+                statusTimer.Interval = 200;
+                statusTimer.Tick += BlinkStatus;
+            }
+
+            statusTimer.Start();
         }
 
-        private void CategoryForm_Load(object sender, EventArgs e)
+        private void BlinkStatus(object sender, EventArgs e)
         {
-            this.ControlBox = false;
+            if (blinkCount < 6)
+            {
+                CategoryStatuslbl.Visible = !CategoryStatuslbl.Visible;
+                blinkCount++;
+            }
+            else
+            {
+                statusTimer.Stop();
+                CategoryStatuslbl.Visible = true;
+            }
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            LoadCategories(searchBox.Text.Trim());
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Placeholder if needed
         }
     }
 }

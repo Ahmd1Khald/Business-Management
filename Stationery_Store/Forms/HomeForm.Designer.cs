@@ -259,9 +259,12 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.GradientActiveCaption;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(918, 517);
             Controls.Add(sidebar);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             IsMdiContainer = true;
             MaximizeBox = false;
             Name = "HomeForm";

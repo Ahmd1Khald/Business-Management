@@ -128,6 +128,7 @@
             buttonHome.Text = "الصفحة الرئيسية";
             buttonHome.TextAlign = ContentAlignment.MiddleRight;
             buttonHome.UseVisualStyleBackColor = false;
+            buttonHome.Click += buttonHome_Click;
             // 
             // panel3
             // 

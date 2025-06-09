@@ -110,8 +110,10 @@ namespace Stationery_Store.Forms
                 categoryForm.FormClosed += categoryForm_FormClosed;
                 categoryForm.MdiParent = this;
                 categoryForm.FormBorderStyle = FormBorderStyle.None;
-                categoryForm.WindowState = FormWindowState.Maximized;
                 categoryForm.Show();
+                // Force resize after showing
+                categoryForm.WindowState = FormWindowState.Normal;
+                categoryForm.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -134,8 +136,9 @@ namespace Stationery_Store.Forms
                 sellForm.FormClosed += sellForm_FormClosed;
                 sellForm.MdiParent = this;
                 sellForm.FormBorderStyle = FormBorderStyle.None;
-                sellForm.WindowState = FormWindowState.Maximized;
                 sellForm.Show();
+                sellForm.WindowState = FormWindowState.Normal;
+                sellForm.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -156,9 +159,10 @@ namespace Stationery_Store.Forms
                 productsForm = new ProductsForm();
                 productsForm.FormClosed += productsForm_FormClosed;
                 productsForm.MdiParent = this;
-                productsForm.FormBorderStyle = FormBorderStyle.None;  // Remove borders
-                productsForm.WindowState = FormWindowState.Maximized;
+                productsForm.FormBorderStyle = FormBorderStyle.None;
                 productsForm.Show();
+                productsForm.WindowState = FormWindowState.Normal;
+                productsForm.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -179,8 +183,9 @@ namespace Stationery_Store.Forms
                 reportForm.FormClosed += reportForm_FormClosed;
                 reportForm.MdiParent = this;
                 reportForm.FormBorderStyle = FormBorderStyle.None;  // Remove borders
-                reportForm.WindowState = FormWindowState.Maximized;
                 reportForm.Show();
+                reportForm.WindowState = FormWindowState.Normal;
+                reportForm.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -202,8 +207,9 @@ namespace Stationery_Store.Forms
                 usersForm.FormClosed += (s, args) => usersForm = null;
                 usersForm.MdiParent = this;
                 usersForm.FormBorderStyle = FormBorderStyle.None;
-                usersForm.WindowState = FormWindowState.Maximized;
                 usersForm.Show();
+                usersForm.WindowState = FormWindowState.Normal;
+                usersForm.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -211,6 +217,14 @@ namespace Stationery_Store.Forms
             }
 
             lastActiveChild = usersForm;
+        }
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                child.Close();
+            }
         }
     }
 }

@@ -207,5 +207,10 @@ namespace Stationery_Store.Forms
                 }
             }
         }
+
+        private void UsersForm_Load_1(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
+        }
     }
 }

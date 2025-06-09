@@ -19,6 +19,13 @@ namespace Stationery_Store
                 {
                     Application.Run(new HomeForm(loginForm.LoggedInUserRole));
                 }
+                //CategoryForm
+                //SellForm
+                //HomeForm(loginForm.LoggedInUserRole)
+                //LoginForm
+                //ProductsForm
+                //Report
+                //UsersForm
             }
         }
 

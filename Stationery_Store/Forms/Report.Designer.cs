@@ -51,6 +51,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.BackColor = SystemColors.GradientInactiveCaption;
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -64,6 +65,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.GradientActiveCaption;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(6, 26);
@@ -97,6 +99,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Anchor = AnchorStyles.Bottom;
             groupBox2.BackColor = SystemColors.GradientInactiveCaption;
             groupBox2.Controls.Add(button2);
             groupBox2.Controls.Add(button1);
@@ -111,23 +114,26 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Anchor = AnchorStyles.Top;
             dateTimePicker1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dateTimePicker1.Location = new Point(167, 57);
+            dateTimePicker1.Location = new Point(19, 57);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 31);
+            dateTimePicker1.Size = new Size(337, 31);
             dateTimePicker1.TabIndex = 6;
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // dateTimePicker2
             // 
+            dateTimePicker2.Anchor = AnchorStyles.Top;
             dateTimePicker2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dateTimePicker2.Location = new Point(519, 57);
+            dateTimePicker2.Location = new Point(450, 57);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 31);
+            dateTimePicker2.Size = new Size(319, 31);
             dateTimePicker2.TabIndex = 7;
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.Location = new Point(780, 57);
@@ -138,9 +144,10 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
             label2.Font = new Font("Showcard Gothic", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label2.Location = new Point(437, 62);
+            label2.Location = new Point(376, 62);
             label2.Name = "label2";
             label2.Size = new Size(32, 23);
             label2.TabIndex = 9;
@@ -148,6 +155,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Anchor = AnchorStyles.Bottom;
             groupBox3.BackColor = SystemColors.GradientInactiveCaption;
             groupBox3.Controls.Add(label6);
             groupBox3.Controls.Add(label4);

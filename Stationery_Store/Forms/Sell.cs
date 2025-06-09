@@ -18,6 +18,7 @@ namespace Stationery_Store.Forms
         public SellForm()
         {
             InitializeComponent();
+            panel1.Size = this.Size;
 
             // Disable auto-generating columns for the product grid
             productsGridView.AutoGenerateColumns = false;

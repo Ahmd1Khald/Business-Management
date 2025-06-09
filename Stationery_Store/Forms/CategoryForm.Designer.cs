@@ -47,6 +47,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(256, 24);
@@ -57,6 +58,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             textBox1.ForeColor = Color.Black;
@@ -70,6 +72,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(723, 88);
@@ -80,8 +83,9 @@
             // 
             // UpdateCategoryBtn
             // 
+            UpdateCategoryBtn.Anchor = AnchorStyles.Bottom;
             UpdateCategoryBtn.BackColor = Color.DodgerBlue;
-            UpdateCategoryBtn.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UpdateCategoryBtn.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
             UpdateCategoryBtn.Location = new Point(31, 528);
             UpdateCategoryBtn.Margin = new Padding(3, 4, 3, 4);
             UpdateCategoryBtn.Name = "UpdateCategoryBtn";
@@ -94,8 +98,9 @@
             // 
             // RemoveCategoryBtn
             // 
+            RemoveCategoryBtn.Anchor = AnchorStyles.Bottom;
             RemoveCategoryBtn.BackColor = Color.Red;
-            RemoveCategoryBtn.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            RemoveCategoryBtn.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
             RemoveCategoryBtn.Location = new Point(310, 528);
             RemoveCategoryBtn.Margin = new Padding(3, 4, 3, 4);
             RemoveCategoryBtn.Name = "RemoveCategoryBtn";
@@ -108,9 +113,10 @@
             // 
             // AddCategoryBtn
             // 
+            AddCategoryBtn.Anchor = AnchorStyles.Bottom;
             AddCategoryBtn.BackColor = Color.Green;
             AddCategoryBtn.FlatAppearance.BorderSize = 0;
-            AddCategoryBtn.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddCategoryBtn.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold);
             AddCategoryBtn.Location = new Point(592, 528);
             AddCategoryBtn.Margin = new Padding(3, 4, 3, 4);
             AddCategoryBtn.Name = "AddCategoryBtn";
@@ -123,6 +129,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(675, 215);
@@ -133,6 +140,7 @@
             // 
             // CategoryStatuslbl
             // 
+            CategoryStatuslbl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             CategoryStatuslbl.AutoSize = true;
             CategoryStatuslbl.ForeColor = Color.Green;
             CategoryStatuslbl.Location = new Point(561, 44);
@@ -142,6 +150,7 @@
             // 
             // textBox2
             // 
+            textBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             textBox2.BackColor = SystemColors.ButtonHighlight;
             textBox2.BorderStyle = BorderStyle.FixedSingle;
             textBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -156,6 +165,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.GradientActiveCaption;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;

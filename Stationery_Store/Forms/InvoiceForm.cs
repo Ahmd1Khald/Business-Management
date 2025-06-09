@@ -20,9 +20,9 @@ namespace Stationery_Store.Forms
 
         private void LoadInvoiceData()
         {
-            labelDate.Text = $"التاريخ: {currentOrder.Date}";
-            labelTotalPrice.Text = $"الإجمالي: {currentOrder.TotalPrice} جنيه";
-            labelTotalQuantity.Text = $"الكمية: {currentOrder.TotalAmount}";
+            //labelDate.Text = $"التاريخ: {currentOrder.Date}";
+            //labelTotalPrice.Text = $"الإجمالي: {currentOrder.TotalPrice} جنيه";
+            //labelTotalQuantity.Text = $"الكمية: {currentOrder.TotalAmount}";
 
             invoiceGridView.Columns.Add("ProductName", "اسم المنتج");
             invoiceGridView.Columns.Add("Quantity", "الكمية");
@@ -48,25 +48,68 @@ namespace Stationery_Store.Forms
             }
         }
 
-        private void PrintDoc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            int y = 100;
-            Font font = new Font("Arial", 12);
-            e.Graphics.DrawString("فاتورة بيع", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, 300, y);
-            y += 40;
+            int startX = 550; // بداية الطباعة من اليمين (حسب عرض الصفحة)
+            int startY = 100;
+            int offsetY = 30;
+            Font titleFont = new Font("Arial", 16, FontStyle.Bold);
+            Font headerFont = new Font("Arial", 12, FontStyle.Bold);
+            Font itemFont = new Font("Arial", 12);
 
-            e.Graphics.DrawString($"التاريخ: {currentOrder.Date}", font, Brushes.Black, 50, y); y += 30;
-            e.Graphics.DrawString("------------------------------------------------", font, Brushes.Black, 50, y); y += 30;
+            // إعداد محاذاة النص من اليمين
+            StringFormat rightAlign = new StringFormat();
+            rightAlign.Alignment = StringAlignment.Far; // محاذاة من اليمين
+            rightAlign.LineAlignment = StringAlignment.Center;
 
+            // عنوان الفاتورة
+            e.Graphics.DrawString("فاتورة بيع", titleFont, Brushes.Black, startX, startY, rightAlign);
+            startY += offsetY + 10;
+
+            // التاريخ
+            e.Graphics.DrawString($"التاريخ: {currentOrder.Date}", itemFont, Brushes.Black, startX, startY, rightAlign);
+            startY += offsetY;
+
+            // خط فصل
+            e.Graphics.DrawLine(Pens.Black, 50, startY, startX, startY);
+            startY += 10;
+
+            // رؤوس الأعمدة: اسم المنتج | الكمية | سعر الوحدة | المجموع
+            int colProductNameX = startX;
+            int colQuantityX = 350;
+            int colUnitPriceX = 250;
+            int colTotalX = 150;
+
+            e.Graphics.DrawString("اسم المنتج", headerFont, Brushes.Black, colProductNameX, startY, rightAlign);
+            e.Graphics.DrawString("الكمية", headerFont, Brushes.Black, colQuantityX, startY, rightAlign);
+            e.Graphics.DrawString("سعر الوحدة", headerFont, Brushes.Black, colUnitPriceX, startY, rightAlign);
+            e.Graphics.DrawString("الإجمالي", headerFont, Brushes.Black, colTotalX, startY, rightAlign);
+            startY += offsetY;
+
+            // خط فصل تحت رؤوس الأعمدة
+            e.Graphics.DrawLine(Pens.Black, 50, startY, startX, startY);
+            startY += 10;
+
+            // تفاصيل البنود
             foreach (var item in currentOrder.OrderItems)
             {
-                e.Graphics.DrawString($"{item.Product.Name} × {item.Quantity} = {item.UnitPrice * item.Quantity} جنيه", font, Brushes.Black, 50, y);
-                y += 30;
+                double totalPerItem = item.UnitPrice * item.Quantity;
+
+                e.Graphics.DrawString(item.Product.Name, itemFont, Brushes.Black, colProductNameX, startY, rightAlign);
+                e.Graphics.DrawString(item.Quantity.ToString(), itemFont, Brushes.Black, colQuantityX, startY, rightAlign);
+                e.Graphics.DrawString($"{item.UnitPrice} جنيه", itemFont, Brushes.Black, colUnitPriceX, startY, rightAlign);
+                e.Graphics.DrawString($"{totalPerItem} جنيه", itemFont, Brushes.Black, colTotalX, startY, rightAlign);
+
+                startY += offsetY;
             }
 
-            y += 20;
-            e.Graphics.DrawString("------------------------------------------------", font, Brushes.Black, 50, y); y += 30;
-            e.Graphics.DrawString($"الإجمالي: {currentOrder.TotalPrice} جنيه", font, Brushes.Black, 50, y);
+            startY += 10;
+            e.Graphics.DrawLine(Pens.Black, 50, startY, startX, startY);
+            startY += 10;
+
+            // الإجمالي النهائي
+            e.Graphics.DrawString($"الإجمالي: {currentOrder.TotalPrice} جنيه", headerFont, Brushes.Black, startX, startY, rightAlign);
         }
+
     }
 }

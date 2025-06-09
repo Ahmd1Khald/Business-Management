@@ -24,6 +24,7 @@ namespace Stationery_Store.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Category>().HasData(
                 new Category { ID = 1, Name = "أقلام", Description = "أقلام جامدة اوي" },
                 new Category { ID = 2, Name = "كشاكيل", Description = "كشاكشيل جامدة اوي" }

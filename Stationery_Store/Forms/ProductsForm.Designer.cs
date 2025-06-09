@@ -76,34 +76,34 @@ namespace Stationery_Store.Forms
             filterPanel.Controls.Add(lblCategory);
             filterPanel.Controls.Add(searchTextBox);
             filterPanel.Controls.Add(lblSearch);
-            filterPanel.Location = new Point(12, 10);
+            filterPanel.Location = new Point(10, 18);
             filterPanel.Name = "filterPanel";
-            filterPanel.Size = new Size(770, 90);
+            filterPanel.Size = new Size(1187, 100);
             filterPanel.TabIndex = 8;
             // 
             // stockStatusComboBox
             // 
             stockStatusComboBox.Font = new Font("Segoe UI", 10F);
             stockStatusComboBox.FormattingEnabled = true;
-            stockStatusComboBox.Location = new Point(10, 50);
+            stockStatusComboBox.Location = new Point(12, 40);
             stockStatusComboBox.Name = "stockStatusComboBox";
-            stockStatusComboBox.Size = new Size(150, 31);
+            stockStatusComboBox.Size = new Size(197, 31);
             stockStatusComboBox.TabIndex = 7;
             // 
             // lblStockStatus
             // 
             lblStockStatus.AutoSize = true;
             lblStockStatus.Font = new Font("Segoe UI", 10F);
-            lblStockStatus.Location = new Point(165, 53);
+            lblStockStatus.Location = new Point(215, 44);
             lblStockStatus.Name = "lblStockStatus";
-            lblStockStatus.Size = new Size(92, 23);
+            lblStockStatus.Size = new Size(104, 23);
             lblStockStatus.TabIndex = 6;
             lblStockStatus.Text = "حالة المخزون:";
             // 
             // txtMaxPrice
             // 
             txtMaxPrice.Font = new Font("Segoe UI", 10F);
-            txtMaxPrice.Location = new Point(270, 50);
+            txtMaxPrice.Location = new Point(346, 41);
             txtMaxPrice.Name = "txtMaxPrice";
             txtMaxPrice.PlaceholderText = "أقصى سعر";
             txtMaxPrice.Size = new Size(100, 30);
@@ -113,16 +113,16 @@ namespace Stationery_Store.Forms
             // 
             lblPriceRange.AutoSize = true;
             lblPriceRange.Font = new Font("Segoe UI", 10F);
-            lblPriceRange.Location = new Point(480, 53);
+            lblPriceRange.Location = new Point(558, 44);
             lblPriceRange.Name = "lblPriceRange";
-            lblPriceRange.Size = new Size(82, 23);
+            lblPriceRange.Size = new Size(97, 23);
             lblPriceRange.TabIndex = 4;
             lblPriceRange.Text = "نطاق السعر:";
             // 
             // txtMinPrice
             // 
             txtMinPrice.Font = new Font("Segoe UI", 10F);
-            txtMinPrice.Location = new Point(375, 50);
+            txtMinPrice.Location = new Point(452, 41);
             txtMinPrice.Name = "txtMinPrice";
             txtMinPrice.PlaceholderText = "أدنى سعر";
             txtMinPrice.Size = new Size(100, 30);
@@ -132,7 +132,7 @@ namespace Stationery_Store.Forms
             // 
             categoryComboBox.Font = new Font("Segoe UI", 10F);
             categoryComboBox.FormattingEnabled = true;
-            categoryComboBox.Location = new Point(270, 10);
+            categoryComboBox.Location = new Point(676, 41);
             categoryComboBox.Name = "categoryComboBox";
             categoryComboBox.Size = new Size(180, 31);
             categoryComboBox.TabIndex = 3;
@@ -141,16 +141,16 @@ namespace Stationery_Store.Forms
             // 
             lblCategory.AutoSize = true;
             lblCategory.Font = new Font("Segoe UI", 10F);
-            lblCategory.Location = new Point(455, 13);
+            lblCategory.Location = new Point(862, 44);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(62, 23);
+            lblCategory.Size = new Size(72, 23);
             lblCategory.TabIndex = 2;
             lblCategory.Text = "الأصناف:";
             // 
             // searchTextBox
             // 
             searchTextBox.Font = new Font("Segoe UI", 10F);
-            searchTextBox.Location = new Point(530, 10);
+            searchTextBox.Location = new Point(961, 41);
             searchTextBox.Name = "searchTextBox";
             searchTextBox.PlaceholderText = "ابحث عن منتج...";
             searchTextBox.Size = new Size(169, 30);
@@ -160,7 +160,7 @@ namespace Stationery_Store.Forms
             // 
             lblSearch.AutoSize = true;
             lblSearch.Font = new Font("Segoe UI", 10F);
-            lblSearch.Location = new Point(700, 13);
+            lblSearch.Location = new Point(1136, 44);
             lblSearch.Name = "lblSearch";
             lblSearch.Size = new Size(46, 23);
             lblSearch.TabIndex = 0;
@@ -184,7 +184,7 @@ namespace Stationery_Store.Forms
             productsGridView.RowHeadersWidth = 51;
             productsGridView.RowTemplate.Height = 35;
             productsGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            productsGridView.Size = new Size(770, 294);
+            productsGridView.Size = new Size(1187, 465);
             productsGridView.TabIndex = 0;
             // 
             // totalProductsLabel
@@ -192,7 +192,7 @@ namespace Stationery_Store.Forms
             totalProductsLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             totalProductsLabel.AutoSize = true;
             totalProductsLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            totalProductsLabel.Location = new Point(10, 497);
+            totalProductsLabel.Location = new Point(10, 668);
             totalProductsLabel.Name = "totalProductsLabel";
             totalProductsLabel.Size = new Size(172, 28);
             totalProductsLabel.TabIndex = 1;
@@ -206,7 +206,7 @@ namespace Stationery_Store.Forms
             btnAddProduct.FlatStyle = FlatStyle.Flat;
             btnAddProduct.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnAddProduct.ForeColor = Color.White;
-            btnAddProduct.Location = new Point(660, 490);
+            btnAddProduct.Location = new Point(1077, 661);
             btnAddProduct.Margin = new Padding(3, 4, 3, 4);
             btnAddProduct.Name = "btnAddProduct";
             btnAddProduct.Size = new Size(120, 35);
@@ -223,7 +223,7 @@ namespace Stationery_Store.Forms
             btnEditProduct.FlatStyle = FlatStyle.Flat;
             btnEditProduct.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnEditProduct.ForeColor = Color.White;
-            btnEditProduct.Location = new Point(530, 490);
+            btnEditProduct.Location = new Point(947, 661);
             btnEditProduct.Margin = new Padding(3, 4, 3, 4);
             btnEditProduct.Name = "btnEditProduct";
             btnEditProduct.Size = new Size(120, 35);
@@ -240,7 +240,7 @@ namespace Stationery_Store.Forms
             btnDeleteProduct.FlatStyle = FlatStyle.Flat;
             btnDeleteProduct.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             btnDeleteProduct.ForeColor = Color.White;
-            btnDeleteProduct.Location = new Point(400, 490);
+            btnDeleteProduct.Location = new Point(817, 661);
             btnDeleteProduct.Margin = new Padding(3, 4, 3, 4);
             btnDeleteProduct.Name = "btnDeleteProduct";
             btnDeleteProduct.Size = new Size(120, 35);
@@ -255,9 +255,9 @@ namespace Stationery_Store.Forms
             pnlNoProductsMessage.AutoSize = true;
             pnlNoProductsMessage.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pnlNoProductsMessage.Controls.Add(flowLayoutPanelNoProducts);
-            pnlNoProductsMessage.Location = new Point(245, 200);
+            pnlNoProductsMessage.Location = new Point(453, 285);
             pnlNoProductsMessage.Name = "pnlNoProductsMessage";
-            pnlNoProductsMessage.Size = new Size(251, 119);
+            pnlNoProductsMessage.Size = new Size(232, 119);
             pnlNoProductsMessage.TabIndex = 5;
             pnlNoProductsMessage.Visible = false;
             // 
@@ -267,7 +267,7 @@ namespace Stationery_Store.Forms
             flowLayoutPanelNoProducts.Controls.Add(lblNoProductsText);
             flowLayoutPanelNoProducts.Controls.Add(btnAddNewProductInline);
             flowLayoutPanelNoProducts.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelNoProducts.Location = new Point(28, 20);
+            flowLayoutPanelNoProducts.Location = new Point(9, 20);
             flowLayoutPanelNoProducts.Name = "flowLayoutPanelNoProducts";
             flowLayoutPanelNoProducts.Size = new Size(220, 96);
             flowLayoutPanelNoProducts.TabIndex = 0;
@@ -304,7 +304,7 @@ namespace Stationery_Store.Forms
             paginationPanel.Controls.Add(btnNext);
             paginationPanel.Controls.Add(btnLast);
             paginationPanel.Controls.Add(lblPageInfo);
-            paginationPanel.Location = new Point(160, 475);
+            paginationPanel.Location = new Point(368, 646);
             paginationPanel.Margin = new Padding(3, 4, 3, 4);
             paginationPanel.Name = "paginationPanel";
             paginationPanel.Size = new Size(480, 44);
@@ -387,7 +387,7 @@ namespace Stationery_Store.Forms
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(800, 532);
+            ClientSize = new Size(1217, 703);
             Controls.Add(btnDeleteProduct);
             Controls.Add(btnEditProduct);
             Controls.Add(btnAddProduct);

@@ -50,6 +50,16 @@ namespace Stationery_Store.Forms
 
         private void ProductsForm_Activated(object sender, EventArgs e)
         {
+            // Reset filters to default state
+            searchTextBox.Text = string.Empty;
+            categoryComboBox.SelectedIndex = 0; // Assuming 0 is "جميع الأصناف"
+            txtMinPrice.Text = string.Empty;
+            txtMaxPrice.Text = string.Empty;
+            stockStatusComboBox.SelectedIndex = 0; // Assuming 0 is "الكل"
+
+            // Reset pagination to the first page
+            currentPage = 1;
+
             LoadProducts();
             LoadCategories();
         }

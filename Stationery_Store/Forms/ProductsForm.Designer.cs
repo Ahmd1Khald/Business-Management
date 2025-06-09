@@ -267,9 +267,9 @@ namespace Stationery_Store.Forms
             flowLayoutPanelNoProducts.Controls.Add(lblNoProductsText);
             flowLayoutPanelNoProducts.Controls.Add(btnAddNewProductInline);
             flowLayoutPanelNoProducts.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanelNoProducts.Location = new Point(9, 20);
+            flowLayoutPanelNoProducts.Location = new Point(0, 11);
             flowLayoutPanelNoProducts.Name = "flowLayoutPanelNoProducts";
-            flowLayoutPanelNoProducts.Size = new Size(220, 96);
+            flowLayoutPanelNoProducts.Size = new Size(229, 105);
             flowLayoutPanelNoProducts.TabIndex = 0;
             flowLayoutPanelNoProducts.WrapContents = false;
             // 
@@ -277,8 +277,8 @@ namespace Stationery_Store.Forms
             // 
             lblNoProductsText.AutoSize = true;
             lblNoProductsText.Font = new Font("Segoe UI", 12F);
-            lblNoProductsText.ForeColor = Color.DarkGray;
-            lblNoProductsText.Location = new Point(14, 0);
+            lblNoProductsText.ForeColor = Color.DimGray;
+            lblNoProductsText.Location = new Point(23, 0);
             lblNoProductsText.Name = "lblNoProductsText";
             lblNoProductsText.Size = new Size(203, 28);
             lblNoProductsText.TabIndex = 0;
@@ -287,7 +287,7 @@ namespace Stationery_Store.Forms
             // 
             // btnAddNewProductInline
             // 
-            btnAddNewProductInline.Location = new Point(0, 38);
+            btnAddNewProductInline.Location = new Point(9, 38);
             btnAddNewProductInline.Margin = new Padding(0, 10, 0, 3);
             btnAddNewProductInline.Name = "btnAddNewProductInline";
             btnAddNewProductInline.Size = new Size(220, 55);

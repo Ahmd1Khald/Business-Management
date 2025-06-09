@@ -44,8 +44,19 @@ namespace Stationery_Store.Entities
                 new User {ID=2,NationalID="12345678912345",Password="123456",Phone="01061748098",UserName="Khaled",UserRole=Role.User }
                 );
 
-            
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Product>()
+                        .HasOne(p => p.Category)
+                        .WithMany(c => c.Products)
+                        .HasForeignKey(p => p.CategoryId)
+                        .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<OrderItem>()
+                        .HasOne(o => o.Product)
+                        .WithMany(p => p.OrderItems)
+                        .HasForeignKey(o => o.ProductId)
+                        .OnDelete(DeleteBehavior.SetNull);  // ProductId = null لو المنتج اتحذف
+
+
         }
     }
 }

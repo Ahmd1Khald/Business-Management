@@ -39,7 +39,7 @@ namespace Stationery_Store.Forms
                     Time = o.Date.ToString("HH:mm"),
                     TotalAmount = o.TotalAmount,
                     TotalPrice = o.TotalPrice,
-                    ProductName = o.OrderItems.Select(oi => oi.Product.Name).FirstOrDefault() ?? "لا يوجد منتج"
+                    ProductName = o.OrderItems.Select(oi => oi.ProductName).FirstOrDefault() ?? "لا يوجد منتج"
                 })
                 .ToList<dynamic>();
 

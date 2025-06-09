@@ -167,6 +167,7 @@ namespace Stationery_Store.Forms
                 OrderItem orderItem = new OrderItem
                 {
                     ProductId = productId,
+                    ProductName = product.Name, // 👈 خزّن اسم المنتج هنا
                     Quantity = quantity,
                     UnitPrice = (double)price,
                     Product = product,

@@ -17,12 +17,15 @@ namespace Stationery_Store.Entities
         public double UnitPrice { get; set; }
 
         [ForeignKey("Product")]
-        public int ProductId { get; set; }
-        public virtual Product Product { get; set; }
+        public int? ProductId { get; set; }  // لازم نخليها nullable عشان نحذف المنتج بعدين
+        public virtual Product? Product { get; set; }
+
+        public string ProductName { get; set; }
 
         [ForeignKey("Order")]
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }
     }
+
 
 }

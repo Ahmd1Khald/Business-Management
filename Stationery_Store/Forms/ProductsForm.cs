@@ -12,20 +12,16 @@ namespace Stationery_Store.Forms
     public partial class ProductsForm : Form
     {
         private Context context = new Context();
+        private int currentPage = 1;
+        private int pageSize = 10;
+        private int totalPages = 1;
+        private IQueryable<dynamic> filteredQuery;
 
         public ProductsForm()
         {
             InitializeComponent();
             ConfigureProductGrid();
             LoadCategories();
-            LoadProducts();
-
-            // Assign event handlers
-            searchTextBox.TextChanged += SearchTextBox_TextChanged;
-            categoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
-            txtMinPrice.TextChanged += PriceRange_TextChanged;
-            txtMaxPrice.TextChanged += PriceRange_TextChanged;
-            stockStatusComboBox.SelectedIndexChanged += StockStatus_SelectedIndexChanged;
 
             // Populate stock status combo box
             stockStatusComboBox.Items.Add(new { Text = "الكل", Value = "All" });
@@ -34,11 +30,59 @@ namespace Stationery_Store.Forms
             stockStatusComboBox.DisplayMember = "Text";
             stockStatusComboBox.ValueMember = "Value";
             stockStatusComboBox.SelectedIndex = 0;
+
+            InitializePaginationControls();
+            LoadProducts();
+
+            // Assign event handlers
+            searchTextBox.TextChanged += SearchTextBox_TextChanged;
+            categoryComboBox.SelectedIndexChanged += CategoryComboBox_SelectedIndexChanged;
+            txtMinPrice.TextChanged += PriceRange_TextChanged;
+            txtMaxPrice.TextChanged += PriceRange_TextChanged;
+            stockStatusComboBox.SelectedIndexChanged += StockStatus_SelectedIndexChanged;
+            productsGridView.Resize += ProductsGridView_Resize; // Add resize event handler
+            this.Resize += ProductsForm_Resize; // Hook up form resize event
+        }
+
+        private void ProductsGridView_Resize(object sender, EventArgs e)
+        {
+            // Recalculate page size and reload products when the DataGridView is resized
+            LoadProducts();
+        }
+
+        private void ProductsForm_Resize(object sender, EventArgs e)
+        {
+            CenterPaginationPanel(); // Center the pagination panel on resize
+        }
+
+        private void InitializePaginationControls()
+        {
+            // Configure pagination panel
+            paginationPanel.Dock = DockStyle.Bottom;
+            paginationPanel.Height = 40;
+            paginationPanel.BackColor = Color.White;
+
+            // Configure navigation buttons
+            btnFirst.Text = "<<";
+            btnPrev.Text = "<";
+            btnNext.Text = ">";
+            btnLast.Text = ">>";
+
+            // Configure page info label
+            lblPageInfo.AutoSize = true;
+            lblPageInfo.Text = $"صفحة {currentPage} من {totalPages}";
+
+            // Add click handlers
+            btnFirst.Click += (s, e) => { currentPage = 1; LoadProducts(); };
+            btnPrev.Click += (s, e) => { if (currentPage > 1) { currentPage--; LoadProducts(); } };
+            btnNext.Click += (s, e) => { if (currentPage < totalPages) { currentPage++; LoadProducts(); } };
+            btnLast.Click += (s, e) => { currentPage = totalPages; LoadProducts(); };
         }
 
         private void ConfigureProductGrid()
         {
             productsGridView.Columns.Clear();
+            productsGridView.AutoGenerateColumns = false;
 
             productsGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -112,55 +156,153 @@ namespace Stationery_Store.Forms
             context?.Dispose();
             context = new Context();
 
-            var products = context.Products
-                .Include(p => p.Category)
-                .Select(p => new
-                {
-                    p.ID,
-                    p.Name,
-                    p.Description,
-                    p.Price,
-                    p.Quantity,
-                    CategoryName = p.Category.Name
-                })
+            // Get the base query
+            filteredQuery = GetFilteredQuery();
+
+            // Dynamically set pageSize based on visible rows in productsGridView
+            if (productsGridView.RowTemplate.Height > 0 && productsGridView.Height > 0)
+            {
+                pageSize = productsGridView.Height / productsGridView.RowTemplate.Height;
+            }
+            else
+            {
+                // Fallback if row height is not yet determined or grid is not visible
+                pageSize = 10; // Default page size
+            }
+            if (pageSize <= 0) pageSize = 1; // Ensure pageSize is at least 1
+
+            // Calculate total pages
+            var totalItems = filteredQuery.Count();
+            totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+            // Ensure current page is valid
+            if (currentPage > totalPages)
+                currentPage = totalPages;
+            if (currentPage < 1)
+                currentPage = 1;
+
+            // Get the current page of products
+            var products = filteredQuery
+                .Skip((currentPage - 1) * pageSize)
+                .Take(pageSize)
                 .ToList();
 
             if (products.Any())
             {
                 productsGridView.Visible = true;
                 totalProductsLabel.Visible = true;
-                filterPanel.Visible = true; // Show filtering section
-                btnAddProduct.Visible = true; // Show footer buttons
+                filterPanel.Visible = true;
+                btnAddProduct.Visible = true;
                 btnEditProduct.Visible = true;
                 btnDeleteProduct.Visible = true;
-                pnlNoProductsMessage.Visible = false; // Hide the 'no products' panel
+                pnlNoProductsMessage.Visible = false;
+                paginationPanel.Visible = true;
 
-                productsGridView.DataSource = null; // Explicitly clear the data source
-                productsGridView.DataSource = products; // Re-assign the new data
-                productsGridView.Refresh(); // Force the DataGridView to refresh its display
-                UpdateTotalProductsLabel(products.Count);
+                productsGridView.DataSource = null;
+                productsGridView.DataSource = products;
+                productsGridView.Refresh();
+                UpdateTotalProductsLabel(totalItems);
+                UpdatePaginationControls();
             }
             else
             {
                 productsGridView.Visible = false;
                 totalProductsLabel.Visible = false;
-                filterPanel.Visible = false; // Hide filtering section
-                btnAddProduct.Visible = false; // Hide footer buttons
+                filterPanel.Visible = false;
+                btnAddProduct.Visible = false;
                 btnEditProduct.Visible = false;
                 btnDeleteProduct.Visible = false;
+                paginationPanel.Visible = false;
 
-                // Center the no products message panel itself within the form
                 pnlNoProductsMessage.Left = (this.ClientSize.Width - pnlNoProductsMessage.Width) / 2;
                 pnlNoProductsMessage.Top = (this.ClientSize.Height - pnlNoProductsMessage.Height) / 2;
 
-                // Dynamically center the button within the flow layout panel based on the label's width
                 int labelWidth = lblNoProductsText.Width;
                 int buttonWidth = btnAddNewProductInline.Width;
                 int leftMargin = Math.Max(0, (labelWidth - buttonWidth) / 2);
-                btnAddNewProductInline.Margin = new Padding(leftMargin, 10, 0, 3); // Apply calculated left margin
+                btnAddNewProductInline.Margin = new Padding(leftMargin, 10, 0, 3);
 
-                pnlNoProductsMessage.Visible = true; // Show the 'no products' panel
+                pnlNoProductsMessage.Visible = true;
             }
+        }
+
+        private IQueryable<dynamic> GetFilteredQuery()
+        {
+            var searchTerm = searchTextBox.Text.Trim().ToLower();
+            var selectedCategory = categoryComboBox.SelectedItem;
+            string minPriceText = txtMinPrice.Text.Trim();
+            string maxPriceText = txtMaxPrice.Text.Trim();
+            string stockStatusValue = (stockStatusComboBox.SelectedItem as dynamic).Value;
+
+            decimal minPrice = 0;
+            decimal maxPrice = decimal.MaxValue;
+
+            if (!string.IsNullOrEmpty(minPriceText) && decimal.TryParse(minPriceText, out decimal parsedMinPrice))
+            {
+                minPrice = parsedMinPrice;
+            }
+
+            if (!string.IsNullOrEmpty(maxPriceText) && decimal.TryParse(maxPriceText, out decimal parsedMaxPrice))
+            {
+                maxPrice = parsedMaxPrice;
+            }
+
+            var query = context.Products.Include(p => p.Category).AsQueryable();
+
+            // Category Filtering
+            if (selectedCategory != null)
+            {
+                int selectedCategoryId = 0;
+                dynamic item = selectedCategory;
+                if (item.ID != null)
+                {
+                    selectedCategoryId = (int)item.ID;
+                }
+
+                if (selectedCategoryId != 0)
+                {
+                    query = query.Where(p => p.CategoryId == selectedCategoryId);
+                }
+            }
+
+            // Search Term Filtering
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                query = query.Where(p => p.Name.ToLower().Contains(searchTerm) ||
+                                       p.Description.ToLower().Contains(searchTerm));
+            }
+
+            // Price Range Filtering
+            query = query.Where(p => (decimal)p.Price >= minPrice && (decimal)p.Price <= maxPrice);
+
+            // Stock Status Filtering
+            if (stockStatusValue == "InStock")
+            {
+                query = query.Where(p => p.Quantity > 0);
+            }
+            else if (stockStatusValue == "OutOfStock")
+            {
+                query = query.Where(p => p.Quantity <= 0);
+            }
+
+            return query.Select(p => new
+            {
+                p.ID,
+                p.Name,
+                p.Description,
+                p.Price,
+                p.Quantity,
+                CategoryName = p.Category.Name
+            });
+        }
+
+        private void UpdatePaginationControls()
+        {
+            lblPageInfo.Text = $"صفحة {currentPage} من {totalPages}";
+            btnFirst.Enabled = currentPage > 1;
+            btnPrev.Enabled = currentPage > 1;
+            btnNext.Enabled = currentPage < totalPages;
+            btnLast.Enabled = currentPage < totalPages;
         }
 
         private void LoadCategories()
@@ -331,6 +473,14 @@ namespace Stationery_Store.Forms
         private void ProductsForm_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+            CenterPaginationPanel(); // Center the pagination panel on load
+        }
+
+        private void CenterPaginationPanel()
+        {
+            // Calculate the X coordinate to center the panel
+            int x = (this.ClientSize.Width - paginationPanel.Width) / 2;
+            paginationPanel.Location = new Point(x, paginationPanel.Location.Y);
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -491,5 +641,7 @@ namespace Stationery_Store.Forms
             // This button should trigger the same logic as the main Add Product button
             btnAddProduct_Click(sender, e);
         }
+
+       
     }
 } 

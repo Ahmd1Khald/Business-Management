@@ -48,6 +48,7 @@
             // dataGridViewUsers
             // 
             dataGridViewUsers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewUsers.BackgroundColor = Color.Azure;
             dataGridViewUsers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewUsers.Location = new Point(12, 57);
             dataGridViewUsers.Name = "dataGridViewUsers";
@@ -58,7 +59,7 @@
             // 
             // textBoxUserName
             // 
-            textBoxUserName.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            textBoxUserName.Anchor = AnchorStyles.Bottom;
             textBoxUserName.Location = new Point(798, 279);
             textBoxUserName.Name = "textBoxUserName";
             textBoxUserName.RightToLeft = RightToLeft.Yes;
@@ -67,7 +68,7 @@
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            textBoxPassword.Anchor = AnchorStyles.Bottom;
             textBoxPassword.Location = new Point(602, 279);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.RightToLeft = RightToLeft.Yes;
@@ -76,7 +77,7 @@
             // 
             // textBoxNationalID
             // 
-            textBoxNationalID.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            textBoxNationalID.Anchor = AnchorStyles.Bottom;
             textBoxNationalID.Location = new Point(361, 279);
             textBoxNationalID.Name = "textBoxNationalID";
             textBoxNationalID.RightToLeft = RightToLeft.Yes;
@@ -85,7 +86,7 @@
             // 
             // textBoxPhone
             // 
-            textBoxPhone.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            textBoxPhone.Anchor = AnchorStyles.Bottom;
             textBoxPhone.Location = new Point(140, 279);
             textBoxPhone.Name = "textBoxPhone";
             textBoxPhone.RightToLeft = RightToLeft.Yes;
@@ -94,7 +95,7 @@
             // 
             // comboBoxRole
             // 
-            comboBoxRole.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            comboBoxRole.Anchor = AnchorStyles.Bottom;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.Items.AddRange(new object[] { "Admin", "User" });
             comboBoxRole.Location = new Point(22, 279);
@@ -106,12 +107,12 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonAdd.Anchor = AnchorStyles.Bottom;
             buttonAdd.BackColor = Color.Green;
             buttonAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonAdd.Location = new Point(704, 348);
+            buttonAdd.Location = new Point(686, 348);
             buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(152, 53);
+            buttonAdd.Size = new Size(216, 53);
             buttonAdd.TabIndex = 7;
             buttonAdd.Text = "إضافة";
             buttonAdd.UseVisualStyleBackColor = false;
@@ -119,12 +120,12 @@
             // 
             // buttonUpdate
             // 
-            buttonUpdate.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonUpdate.Anchor = AnchorStyles.Bottom;
             buttonUpdate.BackColor = Color.Yellow;
             buttonUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonUpdate.Location = new Point(414, 348);
+            buttonUpdate.Location = new Point(396, 348);
             buttonUpdate.Name = "buttonUpdate";
-            buttonUpdate.Size = new Size(163, 53);
+            buttonUpdate.Size = new Size(202, 53);
             buttonUpdate.TabIndex = 8;
             buttonUpdate.Text = "تعديل";
             buttonUpdate.UseVisualStyleBackColor = false;
@@ -132,12 +133,12 @@
             // 
             // buttonDelete
             // 
-            buttonDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonDelete.Anchor = AnchorStyles.Bottom;
             buttonDelete.BackColor = Color.Red;
             buttonDelete.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonDelete.Location = new Point(138, 348);
+            buttonDelete.Location = new Point(120, 348);
             buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(136, 53);
+            buttonDelete.Size = new Size(183, 53);
             buttonDelete.TabIndex = 9;
             buttonDelete.Text = "حذف";
             buttonDelete.UseVisualStyleBackColor = false;
@@ -145,7 +146,7 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label2.Anchor = AnchorStyles.Bottom;
             label2.AutoSize = true;
             label2.Location = new Point(906, 256);
             label2.Name = "label2";
@@ -155,7 +156,7 @@
             // 
             // label3
             // 
-            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label3.Anchor = AnchorStyles.Bottom;
             label3.AutoSize = true;
             label3.Location = new Point(712, 256);
             label3.Name = "label3";
@@ -165,7 +166,7 @@
             // 
             // label4
             // 
-            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label4.Anchor = AnchorStyles.Bottom;
             label4.AutoSize = true;
             label4.Location = new Point(486, 256);
             label4.Name = "label4";
@@ -175,7 +176,7 @@
             // 
             // label5
             // 
-            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label5.Anchor = AnchorStyles.Bottom;
             label5.AutoSize = true;
             label5.Location = new Point(247, 256);
             label5.Name = "label5";
@@ -185,7 +186,7 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label6.Anchor = AnchorStyles.Bottom;
             label6.AutoSize = true;
             label6.Location = new Point(73, 256);
             label6.Name = "label6";

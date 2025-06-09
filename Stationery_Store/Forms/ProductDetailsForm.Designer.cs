@@ -111,7 +111,7 @@ namespace Stationery_Store.Forms
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(42, 20);
             lblCategory.TabIndex = 8;
-            lblCategory.Text = "الفئة:";
+            lblCategory.Text = "الأصناف:";
             // 
             // categoryComboBox
             // 

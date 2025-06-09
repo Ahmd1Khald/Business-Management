@@ -141,7 +141,7 @@ namespace Stationery_Store.Forms
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(48, 23);
             lblCategory.TabIndex = 2;
-            lblCategory.Text = "الفئة:";
+            lblCategory.Text = "الأصناف:";
             // 
             // searchTextBox
             // 

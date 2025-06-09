@@ -42,8 +42,8 @@ namespace Stationery_Store.Forms
 
             var categoryColumn = new DataGridViewComboBoxColumn
             {
-                Name = "Category", // Renamed to be clearer, HeaderText will be "الفئة"
-                HeaderText = "الفئة",
+                Name = "Category", // Renamed to be clearer, HeaderText will be "أصناف"
+                HeaderText = "الأصناف",
                 DataPropertyName = "CategoryId",
                 DisplayMember = "Name",
                 ValueMember = "ID",

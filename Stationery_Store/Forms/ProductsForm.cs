@@ -89,7 +89,7 @@ namespace Stationery_Store.Forms
             productsGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "CategoryName",
-                HeaderText = "الفئة",
+                HeaderText = "الأصناف",
                 DataPropertyName = "CategoryName",
                 Width = 100,
                 ReadOnly = true
@@ -133,7 +133,7 @@ namespace Stationery_Store.Forms
         {
             var categories = context.Categories.ToList();
             categoryComboBox.Items.Clear();
-            categoryComboBox.Items.Add(new { ID = 0, Name = "جميع الفئات" });
+            categoryComboBox.Items.Add(new { ID = 0, Name = "جميع الأصناف" });
             categoryComboBox.DisplayMember = "Name";
             categoryComboBox.ValueMember = "ID";
 

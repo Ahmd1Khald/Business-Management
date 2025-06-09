@@ -12,8 +12,7 @@ namespace Stationery_Store.Forms
     public partial class Report : Form
     {
         Context context = new Context();
-
-        private List<dynamic> filteredOrders; 
+        private List<dynamic> filteredOrders;
 
         public Report()
         {
@@ -37,6 +36,7 @@ namespace Stationery_Store.Forms
                 {
                     OrderID = o.ID,
                     Date = o.Date,
+                    Time = o.Date.ToString("HH:mm"),
                     TotalAmount = o.TotalAmount,
                     TotalPrice = o.TotalPrice,
                     ProductName = o.OrderItems.Select(oi => oi.Product.Name).FirstOrDefault() ?? "لا يوجد منتج"
@@ -46,7 +46,6 @@ namespace Stationery_Store.Forms
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = null;
             dataGridView1.AutoGenerateColumns = false;
-
             dataGridView1.RightToLeft = RightToLeft.Yes;
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -64,6 +63,13 @@ namespace Stationery_Store.Forms
                 HeaderText = "تاريخ الطلب",
                 Width = 120,
                 DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
+            });
+
+            dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Time",
+                HeaderText = "وقت الطلب",
+                Width = 80
             });
 
             dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
@@ -97,7 +103,6 @@ namespace Stationery_Store.Forms
             label6.Text = $"{totalRevenue:C}";
 
             MessageBox.Show($"تم تحميل {filteredOrders.Count} طلب.");
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -123,23 +128,26 @@ namespace Stationery_Store.Forms
             float y = e.MarginBounds.Top;
 
             StringFormat formatRight = new StringFormat();
-            formatRight.Alignment = StringAlignment.Far;  
+            formatRight.Alignment = StringAlignment.Far;
 
             e.Graphics.DrawString("تقرير الطلبات", titleFont, Brushes.Black, new RectangleF(e.MarginBounds.Left, y, e.MarginBounds.Width, lineHeight), formatRight);
             y += 40;
 
+            // العناوين
             e.Graphics.DrawString("رقم الطلب", headerFont, Brushes.Black, xRight - 0, y, formatRight);
             e.Graphics.DrawString("تاريخ الطلب", headerFont, Brushes.Black, xRight - 100, y, formatRight);
-            e.Graphics.DrawString("الكمية", headerFont, Brushes.Black, xRight - 220, y, formatRight);
-            e.Graphics.DrawString("الإجمالي", headerFont, Brushes.Black, xRight - 300, y, formatRight);
+            e.Graphics.DrawString("وقت الطلب", headerFont, Brushes.Black, xRight - 200, y, formatRight);
+            e.Graphics.DrawString("الكمية", headerFont, Brushes.Black, xRight - 300, y, formatRight);
+            e.Graphics.DrawString("الإجمالي", headerFont, Brushes.Black, xRight - 400, y, formatRight);
             y += lineHeight;
 
             foreach (var order in filteredOrders)
             {
                 e.Graphics.DrawString(order.OrderID.ToString(), cellFont, Brushes.Black, xRight - 0, y, formatRight);
                 e.Graphics.DrawString(((DateTime)order.Date).ToShortDateString(), cellFont, Brushes.Black, xRight - 100, y, formatRight);
-                e.Graphics.DrawString(order.TotalAmount.ToString(), cellFont, Brushes.Black, xRight - 220, y, formatRight);
-                e.Graphics.DrawString(((double)order.TotalPrice).ToString("C"), cellFont, Brushes.Black, xRight - 300, y, formatRight);
+                e.Graphics.DrawString(order.Time.ToString(), cellFont, Brushes.Black, xRight - 200, y, formatRight);
+                e.Graphics.DrawString(order.TotalAmount.ToString(), cellFont, Brushes.Black, xRight - 300, y, formatRight);
+                e.Graphics.DrawString(((double)order.TotalPrice).ToString("C"), cellFont, Brushes.Black, xRight - 400, y, formatRight);
                 y += lineHeight;
             }
 

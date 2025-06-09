@@ -20,7 +20,7 @@ namespace Stationery_Store.Forms
             LoadCategories();
 
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
-          
+
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             searchBox.TextChanged += searchBox_TextChanged;
         }
@@ -250,6 +250,11 @@ namespace Stationery_Store.Forms
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             // Placeholder if needed
+        }
+
+        private void CategoryForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -26,9 +26,6 @@ namespace Stationery_Store.Forms
             txtMinPrice.TextChanged += PriceRange_TextChanged;
             txtMaxPrice.TextChanged += PriceRange_TextChanged;
             stockStatusComboBox.SelectedIndexChanged += StockStatus_SelectedIndexChanged;
-            btnAddProduct.Click += btnAddProduct_Click;
-            btnEditProduct.Click += btnEditProduct_Click;
-            btnDeleteProduct.Click += btnDeleteProduct_Click;
 
             // Populate stock status combo box
             stockStatusComboBox.Items.Add(new { Text = "الكل", Value = "All" });
@@ -111,6 +108,10 @@ namespace Stationery_Store.Forms
 
         private void LoadProducts()
         {
+            // Dispose the old context and create a new one to ensure fresh data
+            context?.Dispose();
+            context = new Context();
+
             var products = context.Products
                 .Include(p => p.Category)
                 .Select(p => new
@@ -162,113 +163,6 @@ namespace Stationery_Store.Forms
         private void StockStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             FilterProducts();
-        }
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            // Create a custom dialog form for options
-            using (var optionsForm = new Form())
-            {
-                optionsForm.Text = "إضافة منتج";
-                optionsForm.Size = new Size(300, 150);
-                optionsForm.StartPosition = FormStartPosition.CenterParent;
-                optionsForm.FormBorderStyle = FormBorderStyle.FixedDialog;
-                optionsForm.MaximizeBox = false;
-                optionsForm.MinimizeBox = false;
-                optionsForm.RightToLeft = RightToLeft.Yes;
-
-                // Create buttons
-                var btnSingleProduct = new Button
-                {
-                    Text = "إضافة منتج واحد",
-                    Size = new Size(200, 40),
-                    Location = new Point(50, 20),
-                    DialogResult = DialogResult.Yes
-                };
-
-                var btnMultipleProducts = new Button
-                {
-                    Text = "إضافة عدة منتجات",
-                    Size = new Size(200, 40),
-                    Location = new Point(50, 70),
-                    DialogResult = DialogResult.No
-                };
-
-                // Add buttons to form
-                optionsForm.Controls.Add(btnSingleProduct);
-                optionsForm.Controls.Add(btnMultipleProducts);
-
-                // Show the options dialog
-                var result = optionsForm.ShowDialog();
-
-                if (result == DialogResult.Yes)
-                {
-                    // Single product addition
-                    var detailsForm = new ProductDetailsForm();
-                    if (detailsForm.ShowDialog() == DialogResult.OK)
-                    {
-                        LoadProducts(); // Refresh grid after adding
-                    }
-                    detailsForm.Dispose();
-                }
-                else if (result == DialogResult.No)
-                {
-                    // Multiple products addition
-                    var multiProductForm = new MultiProductForm();
-                    if (multiProductForm.ShowDialog() == DialogResult.OK)
-                    {
-                        LoadProducts(); // Refresh grid after adding multiple products
-                    }
-                    multiProductForm.Dispose();
-                }
-            }
-        }
-
-        private void btnEditProduct_Click(object sender, EventArgs e)
-        {
-            if (productsGridView.SelectedRows.Count > 0)
-            {
-                var selectedRow = productsGridView.SelectedRows[0];
-                // Assuming the bound item is an anonymous type with an ID property
-                var productID = (int)selectedRow.Cells["ID"].Value;
-
-                var detailsForm = new ProductDetailsForm(productID);
-                if (detailsForm.ShowDialog() == DialogResult.OK)
-                {
-                    LoadProducts(); // Refresh grid after editing
-                }
-                detailsForm.Dispose(); // Ensure the dialog is disposed
-            }
-            else
-            {
-                MessageBox.Show("Please select a product to edit.", "Select Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void btnDeleteProduct_Click(object sender, EventArgs e)
-        {
-            if (productsGridView.SelectedRows.Count > 0)
-            {
-                var selectedRow = productsGridView.SelectedRows[0];
-                var productID = (int)selectedRow.Cells["ID"].Value;
-
-                var productToDelete = context.Products.Find(productID);
-
-                if (productToDelete != null)
-                {
-                    var confirmResult = MessageBox.Show("هل أنت متأكد أنك تريد حذف هذا المنتج؟", "تأكيد الحذف", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
-                    if (confirmResult == DialogResult.Yes)
-                    {
-                        context.Products.Remove(productToDelete);
-                        context.SaveChanges();
-                        LoadProducts(); // Refresh grid after deleting
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("يرجى اختيار منتج للحذف.", "اختيار منتج", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
-            }
         }
 
         private void FilterProducts()
@@ -403,6 +297,159 @@ namespace Stationery_Store.Forms
         private void ProductsForm_Load(object sender, EventArgs e)
         {
             this.ControlBox = false;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            // Disable the button immediately to prevent multiple clicks
+            btnAddProduct.Enabled = false;
+            try
+            {
+                // Create a custom dialog form for options
+                using (var optionsForm = new Form())
+                {
+                    optionsForm.Text = "إضافة منتج"; // Restore default title bar text
+                    optionsForm.ControlBox = true; // Restore minimize/maximize/close buttons
+                    optionsForm.Size = new Size(300, 250); // Keep current form size
+                    optionsForm.StartPosition = FormStartPosition.CenterParent;
+                    optionsForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                    optionsForm.MaximizeBox = false;
+                    optionsForm.MinimizeBox = false;
+                    optionsForm.RightToLeft = RightToLeft.Yes;
+                    optionsForm.BackColor = SystemColors.GradientInactiveCaption; // Softer background color
+
+                    // Create buttons
+                    var btnSingleProduct = new Button
+                    {
+                        Text = "إضافة منتج واحد",
+                        Size = new Size(200, 50), // Larger button
+                        // Calculate location to center horizontally, adjusted vertically
+                        Location = new Point((optionsForm.ClientSize.Width - 200) / 2, 60), // Adjusted top padding
+                        DialogResult = DialogResult.Yes,
+                        Font = new Font("Segoe UI", 12F, FontStyle.Bold), // Bolder font
+                        ForeColor = Color.DarkBlue, // Darker text color
+                        BackColor = Color.LightBlue, // Distinct background color for primary action
+                        FlatStyle = FlatStyle.Flat, // Flat style for modern look
+                        UseVisualStyleBackColor = true
+                    };
+                    btnSingleProduct.FlatAppearance.BorderSize = 0; // Remove border for flat style
+
+                    var btnMultipleProducts = new Button
+                    {
+                        Text = "إضافة عدة منتجات",
+                        Size = new Size(200, 50), // Larger button
+                        // Calculate location to center horizontally, adjusted vertically
+                        Location = new Point((optionsForm.ClientSize.Width - 200) / 2, 140), // Adjusted vertical spacing
+                        DialogResult = DialogResult.No,
+                        Font = new Font("Segoe UI", 12F, FontStyle.Bold), // Bolder font
+                        ForeColor = Color.Green, // Darker text color
+                        UseVisualStyleBackColor = true
+                    };
+
+                    // Add buttons to form
+                    optionsForm.Controls.Add(btnSingleProduct);
+                    optionsForm.Controls.Add(btnMultipleProducts);
+
+                    // Show the options dialog
+                    var result = optionsForm.ShowDialog();
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Single product addition
+                        var detailsForm = new ProductDetailsForm();
+                        if (detailsForm.ShowDialog() == DialogResult.OK)
+                        {
+                            LoadProducts(); // Refresh grid after adding
+                        }
+                        detailsForm.Dispose();
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        // Multiple products addition
+                        var multiProductForm = new MultiProductForm();
+                        if (multiProductForm.ShowDialog() == DialogResult.OK)
+                        {
+                            LoadProducts(); // Refresh grid after adding multiple products
+                        }
+                        multiProductForm.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                // Re-enable the button after the dialog is closed
+                btnAddProduct.Enabled = true;
+            }
+        }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            // Disable the button immediately to prevent multiple clicks
+            btnEditProduct.Enabled = false;
+            try
+            {
+                if (productsGridView.SelectedRows.Count > 0)
+                {
+                    var selectedRow = productsGridView.SelectedRows[0];
+                    // Assuming the bound item is an anonymous type with an ID property
+                    var productID = (int)selectedRow.Cells["ID"].Value;
+
+                    var detailsForm = new ProductDetailsForm(productID);
+                    if (detailsForm.ShowDialog() == DialogResult.OK)
+                    {
+                        LoadProducts(); // Refresh grid after editing
+                    }
+                    detailsForm.Dispose(); // Ensure the dialog is disposed
+                }
+                else
+                {
+                    MessageBox.Show("Please select a product to edit.", "Select Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            finally
+            {
+                // Re-enable the button after the action is completed
+                btnEditProduct.Enabled = true;
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            // Disable the button immediately to prevent multiple clicks
+            btnDeleteProduct.Enabled = false;
+            try
+            {
+                if (productsGridView.SelectedRows.Count > 0)
+                {
+                    var selectedRow = productsGridView.SelectedRows[0];
+                    var productID = (int)selectedRow.Cells["ID"].Value;
+
+                    var productToDelete = context.Products.Find(productID);
+
+                    if (productToDelete != null)
+                    {
+                        using (var customMessageBox = new CustomMessageBoxForm("هل أنت متأكد أنك تريد حذف هذا المنتج؟"))
+                        {
+                            var confirmResult = customMessageBox.ShowDialog();
+                            if (confirmResult == DialogResult.Yes)
+                            {
+                                context.Products.Remove(productToDelete);
+                                context.SaveChanges();
+                                LoadProducts(); // Refresh grid after deleting
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("يرجى اختيار منتج للحذف.", "اختيار منتج", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
+                }
+            }
+            finally
+            {
+                // Re-enable the button after the action is completed
+                btnDeleteProduct.Enabled = true;
+            }
         }
     }
 } 

@@ -16,6 +16,9 @@ namespace Stationery_Store.Forms
         public ProductDetailsForm()
         {
             InitializeComponent();
+            this.AcceptButton = btnSave;
+            this.CancelButton = btnCancel;
+            btnCancel.CausesValidation = false; // Prevent validation on cancel
             context = new Context(); // Initialize context
             LoadCategories();
             this.Text = "إضافة منتج جديد";
@@ -25,6 +28,9 @@ namespace Stationery_Store.Forms
         public ProductDetailsForm(int productID)
         {
             InitializeComponent();
+            this.AcceptButton = btnSave;
+            this.CancelButton = btnCancel;
+            btnCancel.CausesValidation = false; // Prevent validation on cancel
             context = new Context(); // Initialize context
             LoadCategories();
             this.Text = "تعديل المنتج";
@@ -63,37 +69,47 @@ namespace Stationery_Store.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs())
+            btnSave.Enabled = false; // Disable the button immediately
+            try
             {
-                if (currentProduct == null)
+                if (ValidateInputs())
                 {
-                    // Add new product
-                    var newProduct = new Product
+                    if (currentProduct == null)
                     {
-                        Name = txtName.Text,
-                        Description = txtDescription.Text,
-                        Price = double.Parse(txtPrice.Text),
-                        Quantity = int.Parse(txtQuantity.Text),
-                        CategoryId = (int)categoryComboBox.SelectedValue
-                    };
-                    context.Products.Add(newProduct);
-                }
-                else
-                {
-                    // Update existing product
-                    currentProduct.Name = txtName.Text;
-                    currentProduct.Description = txtDescription.Text;
-                    currentProduct.Price = double.Parse(txtPrice.Text);
-                    currentProduct.Quantity = int.Parse(txtQuantity.Text);
-                    currentProduct.CategoryId = (int)categoryComboBox.SelectedValue;
-                    // No need to call context.Products.Update(currentProduct) explicitly here
-                    // EF Core tracks changes to currentProduct since it was fetched by this context
-                }
+                        var newProduct = new Product
+                        {
+                            Name = txtName.Text,
+                            Description = txtDescription.Text,
+                            Price = double.Parse(txtPrice.Text),
+                            Quantity = int.Parse(txtQuantity.Text),
+                            CategoryId = (int)categoryComboBox.SelectedValue
+                        };
+                        context.Products.Add(newProduct);
+                    }
+                    else
+                    {
+                        currentProduct.Name = txtName.Text;
+                        currentProduct.Description = txtDescription.Text;
+                        currentProduct.Price = double.Parse(txtPrice.Text);
+                        currentProduct.Quantity = int.Parse(txtQuantity.Text);
+                        currentProduct.CategoryId = (int)categoryComboBox.SelectedValue;
+                    }
 
-                context.SaveChanges();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    context.SaveChanges();
+                    this.DialogResult = DialogResult.OK; // Set result before closing
+                    this.Close();
+                }
             }
+            finally
+            {
+                btnSave.Enabled = true; // Re-enable the button
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel; // Ensure dialog result is set
+            this.Close();
         }
 
         private bool ValidateInputs()
@@ -127,11 +143,7 @@ namespace Stationery_Store.Forms
             return true;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
+       
 
         protected override void Dispose(bool disposing)
         {

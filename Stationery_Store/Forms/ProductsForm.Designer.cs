@@ -53,7 +53,7 @@ namespace Stationery_Store.Forms
             // 
             // filterPanel
             // 
-            filterPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            filterPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             filterPanel.Controls.Add(stockStatusComboBox);
             filterPanel.Controls.Add(lblStockStatus);
             filterPanel.Controls.Add(txtMaxPrice);
@@ -63,9 +63,10 @@ namespace Stationery_Store.Forms
             filterPanel.Controls.Add(lblCategory);
             filterPanel.Controls.Add(searchTextBox);
             filterPanel.Controls.Add(lblSearch);
-            filterPanel.Location = new Point(10, 12);
+            filterPanel.Location = new Point(20, 0);
             filterPanel.Margin = new Padding(3, 4, 3, 4);
             filterPanel.Name = "filterPanel";
+            filterPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             filterPanel.Size = new Size(770, 100);
             filterPanel.TabIndex = 4;
             // 
@@ -74,7 +75,7 @@ namespace Stationery_Store.Forms
             stockStatusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             stockStatusComboBox.Font = new Font("Segoe UI", 10F);
             stockStatusComboBox.FormattingEnabled = true;
-            stockStatusComboBox.Location = new Point(446, 46);
+            stockStatusComboBox.Location = new Point(446, 50);
             stockStatusComboBox.Margin = new Padding(3, 4, 3, 4);
             stockStatusComboBox.Name = "stockStatusComboBox";
             stockStatusComboBox.Size = new Size(132, 31);
@@ -145,7 +146,7 @@ namespace Stationery_Store.Forms
             // searchTextBox
             // 
             searchTextBox.Font = new Font("Segoe UI", 10F);
-            searchTextBox.Location = new Point(581, 46);
+            searchTextBox.Location = new Point(584, 51);
             searchTextBox.Margin = new Padding(3, 4, 3, 4);
             searchTextBox.Name = "searchTextBox";
             searchTextBox.PlaceholderText = "ابحث عن منتج...";
@@ -245,7 +246,7 @@ namespace Stationery_Store.Forms
             Controls.Add(productsGridView);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProductsForm";
-            RightToLeft = RightToLeft.No;
+            RightToLeft = RightToLeft.Yes;
             SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "المنتجات";

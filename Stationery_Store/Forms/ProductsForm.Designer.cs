@@ -47,8 +47,14 @@ namespace Stationery_Store.Forms
             btnAddProduct = new Button();
             btnEditProduct = new Button();
             btnDeleteProduct = new Button();
+            pnlNoProductsMessage = new Panel();
+            flowLayoutPanelNoProducts = new FlowLayoutPanel();
+            lblNoProductsText = new Label();
+            btnAddNewProductInline = new Button();
             filterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)productsGridView).BeginInit();
+            pnlNoProductsMessage.SuspendLayout();
+            flowLayoutPanelNoProducts.SuspendLayout();
             SuspendLayout();
             // 
             // filterPanel
@@ -66,7 +72,7 @@ namespace Stationery_Store.Forms
             filterPanel.Location = new Point(20, 0);
             filterPanel.Margin = new Padding(3, 4, 3, 4);
             filterPanel.Name = "filterPanel";
-            filterPanel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            filterPanel.RightToLeft = RightToLeft.Yes;
             filterPanel.Size = new Size(770, 100);
             filterPanel.TabIndex = 4;
             // 
@@ -139,7 +145,7 @@ namespace Stationery_Store.Forms
             lblCategory.Font = new Font("Segoe UI", 10F);
             lblCategory.Location = new Point(162, 19);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(48, 23);
+            lblCategory.Size = new Size(72, 23);
             lblCategory.TabIndex = 2;
             lblCategory.Text = "الأصناف:";
             // 
@@ -231,6 +237,49 @@ namespace Stationery_Store.Forms
             btnDeleteProduct.UseVisualStyleBackColor = true;
             btnDeleteProduct.Click += btnDeleteProduct_Click;
             // 
+            // pnlNoProductsMessage
+            // 
+            pnlNoProductsMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            pnlNoProductsMessage.Controls.Add(flowLayoutPanelNoProducts);
+            pnlNoProductsMessage.Name = "pnlNoProductsMessage";
+            pnlNoProductsMessage.TabIndex = 8;
+            pnlNoProductsMessage.Visible = false;
+            pnlNoProductsMessage.AutoSize = true;
+            pnlNoProductsMessage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            // 
+            // flowLayoutPanelNoProducts
+            // 
+            flowLayoutPanelNoProducts.Controls.Add(lblNoProductsText);
+            flowLayoutPanelNoProducts.Controls.Add(btnAddNewProductInline);
+            flowLayoutPanelNoProducts.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanelNoProducts.Name = "flowLayoutPanelNoProducts";
+            flowLayoutPanelNoProducts.TabIndex = 0;
+            flowLayoutPanelNoProducts.WrapContents = false;
+            flowLayoutPanelNoProducts.AutoSize = true;
+            flowLayoutPanelNoProducts.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelNoProducts.Padding = new Padding(0, 10, 0, 0);
+            // 
+            // lblNoProductsText
+            // 
+            lblNoProductsText.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            lblNoProductsText.ForeColor = System.Drawing.Color.Green;
+            lblNoProductsText.AutoSize = true;
+            lblNoProductsText.Margin = new System.Windows.Forms.Padding(0, 5, 0, 10);
+            lblNoProductsText.Name = "lblNoProductsText";
+            lblNoProductsText.TabIndex = 0;
+            lblNoProductsText.Text = "لا توجد منتجات لعرضها.";
+            lblNoProductsText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnAddNewProductInline
+            // 
+            btnAddNewProductInline.Name = "btnAddNewProductInline";
+            btnAddNewProductInline.Size = new System.Drawing.Size(220, 55);
+            btnAddNewProductInline.TabIndex = 1;
+            btnAddNewProductInline.Text = "إضافة منتج جديد";
+            btnAddNewProductInline.UseVisualStyleBackColor = true;
+            btnAddNewProductInline.Click += btnAddNewProductInline_Click;
+            btnAddNewProductInline.Margin = new System.Windows.Forms.Padding(0, 10, 0, 3);
+            // 
             // ProductsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -243,6 +292,7 @@ namespace Stationery_Store.Forms
             Controls.Add(btnAddProduct);
             Controls.Add(filterPanel);
             Controls.Add(totalProductsLabel);
+            Controls.Add(pnlNoProductsMessage);
             Controls.Add(productsGridView);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProductsForm";
@@ -254,6 +304,9 @@ namespace Stationery_Store.Forms
             filterPanel.ResumeLayout(false);
             filterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)productsGridView).EndInit();
+            pnlNoProductsMessage.ResumeLayout(false);
+            flowLayoutPanelNoProducts.ResumeLayout(false);
+            pnlNoProductsMessage.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,5 +328,9 @@ namespace Stationery_Store.Forms
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.Button btnEditProduct;
         private System.Windows.Forms.Button btnDeleteProduct;
+        private System.Windows.Forms.Panel pnlNoProductsMessage;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNoProducts;
+        private System.Windows.Forms.Label lblNoProductsText;
+        private System.Windows.Forms.Button btnAddNewProductInline;
     }
 } 

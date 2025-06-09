@@ -125,10 +125,42 @@ namespace Stationery_Store.Forms
                 })
                 .ToList();
 
-            productsGridView.DataSource = null; // Explicitly clear the data source
-            productsGridView.DataSource = products; // Re-assign the new data
-            productsGridView.Refresh(); // Force the DataGridView to refresh its display
-            UpdateTotalProductsLabel(products.Count);
+            if (products.Any())
+            {
+                productsGridView.Visible = true;
+                totalProductsLabel.Visible = true;
+                filterPanel.Visible = true; // Show filtering section
+                btnAddProduct.Visible = true; // Show footer buttons
+                btnEditProduct.Visible = true;
+                btnDeleteProduct.Visible = true;
+                pnlNoProductsMessage.Visible = false; // Hide the 'no products' panel
+
+                productsGridView.DataSource = null; // Explicitly clear the data source
+                productsGridView.DataSource = products; // Re-assign the new data
+                productsGridView.Refresh(); // Force the DataGridView to refresh its display
+                UpdateTotalProductsLabel(products.Count);
+            }
+            else
+            {
+                productsGridView.Visible = false;
+                totalProductsLabel.Visible = false;
+                filterPanel.Visible = false; // Hide filtering section
+                btnAddProduct.Visible = false; // Hide footer buttons
+                btnEditProduct.Visible = false;
+                btnDeleteProduct.Visible = false;
+
+                // Center the no products message panel itself within the form
+                pnlNoProductsMessage.Left = (this.ClientSize.Width - pnlNoProductsMessage.Width) / 2;
+                pnlNoProductsMessage.Top = (this.ClientSize.Height - pnlNoProductsMessage.Height) / 2;
+
+                // Dynamically center the button within the flow layout panel based on the label's width
+                int labelWidth = lblNoProductsText.Width;
+                int buttonWidth = btnAddNewProductInline.Width;
+                int leftMargin = Math.Max(0, (labelWidth - buttonWidth) / 2);
+                btnAddNewProductInline.Margin = new Padding(leftMargin, 10, 0, 3); // Apply calculated left margin
+
+                pnlNoProductsMessage.Visible = true; // Show the 'no products' panel
+            }
         }
 
         private void LoadCategories()
@@ -452,6 +484,12 @@ namespace Stationery_Store.Forms
                 // Re-enable the button after the action is completed
                 btnDeleteProduct.Enabled = true;
             }
+        }
+
+        private void btnAddNewProductInline_Click(object sender, EventArgs e)
+        {
+            // This button should trigger the same logic as the main Add Product button
+            btnAddProduct_Click(sender, e);
         }
     }
 } 

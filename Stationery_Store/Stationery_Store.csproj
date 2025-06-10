@@ -9,16 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\appdata.db" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Data\appdata.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">

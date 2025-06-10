@@ -1,4 +1,8 @@
+﻿using Microsoft.EntityFrameworkCore; // علشان تقدر تستخدم Migrate
+using Stationery_Store.Entities; // علشان تقدر تستدعي الـ Context
 using Stationery_Store.Forms;
+using System;
+using System.Windows.Forms;
 
 namespace Stationery_Store
 {
@@ -10,6 +14,12 @@ namespace Stationery_Store
         [STAThread]
         static void Main()
         {
+            // إنشاء قاعدة البيانات وتطبيق المايجريشنز إن وُجدت
+            using (var context = new Context())
+            {
+                context.Database.Migrate(); // هنا بيتأكد إن الداتا بيز متحدثة وجاهزة
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -19,15 +29,16 @@ namespace Stationery_Store
                 {
                     Application.Run(new HomeForm(loginForm.LoggedInUserRole));
                 }
-                //CategoryForm
-                //SellForm
-                //HomeForm(loginForm.LoggedInUserRole)
-                //LoginForm
-                //ProductsForm
-                //Report
-                //UsersForm
+
+                // Forms:
+                // CategoryForm
+                // SellForm
+                // HomeForm(loginForm.LoggedInUserRole)
+                // LoginForm
+                // ProductsForm
+                // Report
+                // UsersForm
             }
         }
-
     }
 }

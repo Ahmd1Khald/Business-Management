@@ -14,13 +14,21 @@ namespace Stationery_Store.Entities
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> Order_Items { get; set; }
         public DbSet<User> Users { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
+     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    base.OnConfiguring(optionsBuilder);
 
-            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "appdata.db");
-            optionsBuilder.UseSqlite($"Data Source={dbPath}");
-        }
+    string dataFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+
+    // Ensure the folder exists
+    if (!Directory.Exists(dataFolder))
+    {
+        Directory.CreateDirectory(dataFolder);
+    }
+
+    string dbPath = Path.Combine(dataFolder, "appdata.db");
+    optionsBuilder.UseSqlite($"Data Source={dbPath}");
+}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

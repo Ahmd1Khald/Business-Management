@@ -77,7 +77,7 @@
             label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             label1.Location = new Point(81, 5);
             label1.Name = "label1";
-            label1.Size = new Size(62, 17);
+            label1.Size = new Size(77, 20);
             label1.TabIndex = 3;
             label1.Text = "إدارة المكتبة";
             // 
@@ -284,6 +284,7 @@
             Controls.Add(sidebar);
             Controls.Add(panel1);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             IsMdiContainer = true;
             MaximizeBox = false;
             Name = "HomeForm";

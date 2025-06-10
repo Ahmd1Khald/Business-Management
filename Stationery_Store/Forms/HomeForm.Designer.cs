@@ -46,6 +46,7 @@
             buttonReports = new Button();
             panel7 = new Panel();
             buttonUsers = new Button();
+            BackupBtn = new Button();
             sidebarTransition = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnHome).BeginInit();
@@ -67,16 +68,16 @@
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.RightToLeft = RightToLeft.Yes;
-            panel1.Size = new Size(918, 38);
+            panel1.Size = new Size(925, 38);
             panel1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            label1.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             label1.Location = new Point(81, 5);
             label1.Name = "label1";
-            label1.Size = new Size(88, 30);
+            label1.Size = new Size(62, 17);
             label1.TabIndex = 3;
             label1.Text = "إدارة المكتبة";
             // 
@@ -100,10 +101,11 @@
             sidebar.Controls.Add(panel5);
             sidebar.Controls.Add(panel6);
             sidebar.Controls.Add(panel7);
+            sidebar.Controls.Add(BackupBtn);
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 38);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(191, 479);
+            sidebar.Size = new Size(191, 519);
             sidebar.TabIndex = 1;
             // 
             // panel2
@@ -117,7 +119,7 @@
             // buttonHome
             // 
             buttonHome.BackColor = SystemColors.ActiveCaption;
-            buttonHome.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonHome.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             buttonHome.ForeColor = Color.Black;
             buttonHome.Image = (Image)resources.GetObject("buttonHome.Image");
             buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
@@ -141,7 +143,7 @@
             // buttonSell
             // 
             buttonSell.BackColor = SystemColors.ActiveCaption;
-            buttonSell.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonSell.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             buttonSell.ForeColor = Color.Black;
             buttonSell.Image = (Image)resources.GetObject("buttonSell.Image");
             buttonSell.ImageAlign = ContentAlignment.MiddleLeft;
@@ -165,7 +167,7 @@
             // buttonCategories
             // 
             buttonCategories.BackColor = SystemColors.ActiveCaption;
-            buttonCategories.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonCategories.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             buttonCategories.ForeColor = Color.Black;
             buttonCategories.Image = (Image)resources.GetObject("buttonCategories.Image");
             buttonCategories.ImageAlign = ContentAlignment.MiddleLeft;
@@ -189,7 +191,7 @@
             // buttonProducts
             // 
             buttonProducts.BackColor = SystemColors.ActiveCaption;
-            buttonProducts.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonProducts.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             buttonProducts.ForeColor = Color.Black;
             buttonProducts.Image = (Image)resources.GetObject("buttonProducts.Image");
             buttonProducts.ImageAlign = ContentAlignment.MiddleLeft;
@@ -213,7 +215,7 @@
             // buttonReports
             // 
             buttonReports.BackColor = SystemColors.ActiveCaption;
-            buttonReports.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonReports.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             buttonReports.ForeColor = Color.Black;
             buttonReports.Image = (Image)resources.GetObject("buttonReports.Image");
             buttonReports.ImageAlign = ContentAlignment.MiddleLeft;
@@ -237,7 +239,7 @@
             // buttonUsers
             // 
             buttonUsers.BackColor = SystemColors.ActiveCaption;
-            buttonUsers.Font = new Font("PT Bold Heading", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            buttonUsers.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             buttonUsers.ForeColor = Color.Black;
             buttonUsers.Image = (Image)resources.GetObject("buttonUsers.Image");
             buttonUsers.ImageAlign = ContentAlignment.MiddleLeft;
@@ -250,6 +252,22 @@
             buttonUsers.UseVisualStyleBackColor = false;
             buttonUsers.Click += buttonUsers_Click;
             // 
+            // BackupBtn
+            // 
+            BackupBtn.BackColor = SystemColors.ActiveCaption;
+            BackupBtn.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
+            BackupBtn.ForeColor = Color.Black;
+            BackupBtn.Image = (Image)resources.GetObject("BackupBtn.Image");
+            BackupBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            BackupBtn.Location = new Point(3, 421);
+            BackupBtn.Name = "BackupBtn";
+            BackupBtn.Size = new Size(184, 62);
+            BackupBtn.TabIndex = 2;
+            BackupBtn.Text = "النسخ الإحتياطي     ";
+            BackupBtn.TextAlign = ContentAlignment.MiddleRight;
+            BackupBtn.UseVisualStyleBackColor = false;
+            BackupBtn.Click += BackupBtn_Click;
+            // 
             // sidebarTransition
             // 
             sidebarTransition.Interval = 10;
@@ -261,7 +279,7 @@
             BackColor = SystemColors.GradientActiveCaption;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(918, 517);
+            ClientSize = new Size(925, 557);
             Controls.Add(sidebar);
             Controls.Add(panel1);
             DoubleBuffered = true;
@@ -303,5 +321,6 @@
         private System.Windows.Forms.Timer sidebarTransition;
         private Panel panel7;
         private Button buttonUsers;
+        private Button BackupBtn;
     }
 }

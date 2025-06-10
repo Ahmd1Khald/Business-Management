@@ -63,6 +63,26 @@ namespace Stationery_Store.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bc5d0a5b_3c17_4a30_9a79_507e6e9d6058 {
+            get {
+                object obj = ResourceManager.GetObject("bc5d0a5b-3c17-4a30-9a79-507e6e9d6058", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bc5d0a5b_3c17_4a30_9a79_507e6e9d60581 {
+            get {
+                object obj = ResourceManager.GetObject("bc5d0a5b-3c17-4a30-9a79-507e6e9d60581", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login {
             get {
                 object obj = ResourceManager.GetObject("login", resourceCulture);

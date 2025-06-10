@@ -254,6 +254,7 @@
             // 
             // BackupBtn
             // 
+            BackupBtn.AutoSize = true;
             BackupBtn.BackColor = SystemColors.ActiveCaption;
             BackupBtn.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 178);
             BackupBtn.ForeColor = Color.Black;
@@ -261,7 +262,7 @@
             BackupBtn.ImageAlign = ContentAlignment.MiddleLeft;
             BackupBtn.Location = new Point(3, 421);
             BackupBtn.Name = "BackupBtn";
-            BackupBtn.Size = new Size(184, 62);
+            BackupBtn.Size = new Size(184, 60);
             BackupBtn.TabIndex = 2;
             BackupBtn.Text = "النسخ الإحتياطي     ";
             BackupBtn.TextAlign = ContentAlignment.MiddleRight;
@@ -293,6 +294,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnHome).EndInit();
             sidebar.ResumeLayout(false);
+            sidebar.PerformLayout();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);

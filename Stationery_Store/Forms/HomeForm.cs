@@ -55,6 +55,7 @@ namespace Stationery_Store.Forms
                 buttonProducts.Visible = false;
                 buttonReports.Visible = false;
                 buttonUsers.Visible = false;
+                BackupBtn.Visible = false;
 
                 // مباشرة عرض شاشة البيع للمستخدم العادي
                 buttonSell.PerformClick();

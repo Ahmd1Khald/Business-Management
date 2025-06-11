@@ -1,6 +1,6 @@
 # 🧾 Business Management System
 
-![Project Logo](b5b6acdb-93bb-43fb-9a2d-5fa9e321a154.png)
+![Project Logo](https://github.com/Ahmd1Khald/Business-Management/blob/master/assets/management.ico)
 
 A complete desktop-based management system tailored for stationery shops, developed using **C# Windows Forms** and **SQLite**. The system provides an intuitive interface to manage products, handle sales operations, and print detailed reports with ease.
 
@@ -52,8 +52,8 @@ This project was delivered as a **paid freelance job** for a real client, under 
 
 ## 👥 Contributors
 
-- 💻 **Developer:** Ahmed Khaled  
-- 👨‍🏫 **Supervisor:** Information Technology Institute (ITI)  
+- 💻 **Developer:** Ahmed Khaled Noor-Elhady , Ahmed Khaled Sayed , Mahmoud AbdelGhany , Maahmoud Ali , Alaa Ayash , Marawan Abdeen 
+- 👨‍🏫 **Supervisor:** Merihan Mohamed : Information Technology Institute (ITI)  
 - 🤝 **Client:** Confidential – Freelance Project
 
 ---
@@ -61,7 +61,7 @@ This project was delivered as a **paid freelance job** for a real client, under 
 ## 📸 Screenshots
 
 ### Login Screen:
-![Login Screenshot](b5b6acdb-93bb-43fb-9a2d-5fa9e321a154.png)
+![Login Screenshot](https://github.com/Ahmd1Khald/Business-Management/blob/master/assets/Screenshot%202025-06-11%20205324.png)
 
 *(Feel free to add more screenshots of the system's features here)*
 

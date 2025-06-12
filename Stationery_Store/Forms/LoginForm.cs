@@ -25,27 +25,28 @@ namespace Stationery_Store
             if (user == null)
             {
                 PassWordMessagelabel.Visible = false;
-                UserNameMessagelabel.Text = "ÊÃßÏ ãä ÇÓã ÇáãÓÊÎÏã";
+                UserNameMessagelabel.Text = "Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯";
                 UserNameMessagelabel.Visible = true;
             }
             else
             {
                 if (user.Password == password)
                 {
-                    MessageBox.Show(user.UserRole + " Êã ÊÓÌíá ÇáÏÎæá ÈäÌÇÍ");
+                    MessageBox.Show(user.UserRole + " ØªÙ… ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¯Ø®ÙˆÙ„ Ø¨Ù†Ø¬Ø§Ø­");
 
                     LoggedInUserRole = user.UserRole;
 
-                    this.DialogResult = DialogResult.OK;  // ãåã ÌÏÇ
-                    this.Close();                         // ÇŞİá ÇáİæÑã ÈÚÏ ÊÓÌíá ÇáÏÎæá
+                    this.DialogResult = DialogResult.OK;  // Ø¥Ø¹Ø·Ø§Ø¡ Ù†ØªÙŠØ¬Ø© Ù†Ø¬Ø§Ø­ Ù„Ù„Ù†Ù…ÙˆØ°Ø¬
+                    this.Close();                         // Ø¥ØºÙ„Ø§Ù‚ Ù†Ø§ÙØ°Ø© ØªØ³Ø¬ÙŠÙ„ Ø§Ù„Ø¯Ø®ÙˆÙ„
                 }
                 else
                 {
                     UserNameMessagelabel.Visible = false;
-                    PassWordMessagelabel.Text = "ÊÃßÏ ãä ßáãÉ ÇáÓÑ";
+                    PassWordMessagelabel.Text = "ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± ØºÙŠØ± ØµØ­ÙŠØ­Ø©";
                     PassWordMessagelabel.Visible = true;
                 }
             }
+
         }
 
     }
